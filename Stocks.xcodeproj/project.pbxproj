@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -19,11 +19,13 @@
 		990628F026BFAAC3001DBE44 /* PersistanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990628EF26BFAAC3001DBE44 /* PersistanceManager.swift */; };
 		990628F226BFAAD3001DBE44 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990628F126BFAAD3001DBE44 /* HapticsManager.swift */; };
 		990628F426BFCD9A001DBE44 /* UIViewPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990628F326BFCD9A001DBE44 /* UIViewPreview.swift */; };
-		990628F626BFD24C001DBE44 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990628F526BFD24C001DBE44 /* Extensions.swift */; };
+		990628F626BFD24C001DBE44 /* UIView+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990628F526BFD24C001DBE44 /* UIView+UIKit.swift */; };
 		990628F826BFD609001DBE44 /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990628F726BFD609001DBE44 /* SearchResultTableViewCell.swift */; };
 		990628FA26BFF852001DBE44 /* PreviewDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990628F926BFF852001DBE44 /* PreviewDevice.swift */; };
 		990628FC26BFF9AC001DBE44 /* UIViewControllerPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990628FB26BFF9AC001DBE44 /* UIViewControllerPreview.swift */; };
 		990628FE26C00D6D001DBE44 /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990628FD26C00D6D001DBE44 /* SearchResponse.swift */; };
+		9983D88D26C0F43600841455 /* FloatingPanel in Frameworks */ = {isa = PBXBuildFile; productRef = 9983D88C26C0F43600841455 /* FloatingPanel */; };
+		998AACDF26C0F0A000D2F365 /* ExampleChildViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998AACDE26C0F0A000D2F365 /* ExampleChildViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,11 +43,12 @@
 		990628EF26BFAAC3001DBE44 /* PersistanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceManager.swift; sourceTree = "<group>"; };
 		990628F126BFAAD3001DBE44 /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
 		990628F326BFCD9A001DBE44 /* UIViewPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewPreview.swift; sourceTree = "<group>"; };
-		990628F526BFD24C001DBE44 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		990628F526BFD24C001DBE44 /* UIView+UIKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+UIKit.swift"; sourceTree = "<group>"; };
 		990628F726BFD609001DBE44 /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
 		990628F926BFF852001DBE44 /* PreviewDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewDevice.swift; sourceTree = "<group>"; };
 		990628FB26BFF9AC001DBE44 /* UIViewControllerPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerPreview.swift; sourceTree = "<group>"; };
 		990628FD26C00D6D001DBE44 /* SearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponse.swift; sourceTree = "<group>"; };
+		998AACDE26C0F0A000D2F365 /* ExampleChildViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleChildViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9983D88D26C0F43600841455 /* FloatingPanel in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,12 +133,13 @@
 		990628E626BFA7A8001DBE44 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				998AACDE26C0F0A000D2F365 /* ExampleChildViewController.swift */,
 				990628D726BFA716001DBE44 /* Assets.xcassets */,
 				990628CE26BFA714001DBE44 /* AppDelegate.swift */,
 				990628D026BFA714001DBE44 /* SceneDelegate.swift */,
 				990628F326BFCD9A001DBE44 /* UIViewPreview.swift */,
 				990628FB26BFF9AC001DBE44 /* UIViewControllerPreview.swift */,
-				990628F526BFD24C001DBE44 /* Extensions.swift */,
+				990628F526BFD24C001DBE44 /* UIView+UIKit.swift */,
 				990628F926BFF852001DBE44 /* PreviewDevice.swift */,
 			);
 			path = Other;
@@ -156,6 +161,9 @@
 			dependencies = (
 			);
 			name = Stocks;
+			packageProductDependencies = (
+				9983D88C26C0F43600841455 /* FloatingPanel */,
+			);
 			productName = Stocks;
 			productReference = 990628CB26BFA714001DBE44 /* Stocks.app */;
 			productType = "com.apple.product-type.application";
@@ -183,6 +191,9 @@
 				Base,
 			);
 			mainGroup = 990628C226BFA714001DBE44;
+			packageReferences = (
+				9983D88B26C0F43600841455 /* XCRemoteSwiftPackageReference "FloatingPanel" */,
+			);
 			productRefGroup = 990628CC26BFA714001DBE44 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -212,6 +223,7 @@
 				990628F226BFAAD3001DBE44 /* HapticsManager.swift in Sources */,
 				990628EC26BFA889001DBE44 /* StockDetailsViewController.swift in Sources */,
 				990628F826BFD609001DBE44 /* SearchResultTableViewCell.swift in Sources */,
+				998AACDF26C0F0A000D2F365 /* ExampleChildViewController.swift in Sources */,
 				990628FC26BFF9AC001DBE44 /* UIViewControllerPreview.swift in Sources */,
 				990628E826BFA835001DBE44 /* TopStoriesViewController.swift in Sources */,
 				990628FA26BFF852001DBE44 /* PreviewDevice.swift in Sources */,
@@ -222,7 +234,7 @@
 				990628D126BFA714001DBE44 /* SceneDelegate.swift in Sources */,
 				990628FE26C00D6D001DBE44 /* SearchResponse.swift in Sources */,
 				990628EA26BFA878001DBE44 /* SearchResultsViewController.swift in Sources */,
-				990628F626BFD24C001DBE44 /* Extensions.swift in Sources */,
+				990628F626BFD24C001DBE44 /* UIView+UIKit.swift in Sources */,
 				990628F026BFAAC3001DBE44 /* PersistanceManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -419,6 +431,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9983D88B26C0F43600841455 /* XCRemoteSwiftPackageReference "FloatingPanel" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scenee/FloatingPanel";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.4.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9983D88C26C0F43600841455 /* FloatingPanel */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9983D88B26C0F43600841455 /* XCRemoteSwiftPackageReference "FloatingPanel" */;
+			productName = FloatingPanel;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 990628C326BFA714001DBE44 /* Project object */;
 }

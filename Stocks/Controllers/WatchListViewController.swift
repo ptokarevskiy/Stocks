@@ -1,9 +1,11 @@
+import FloatingPanel
 import UIKit
 
 // MARK: - WatchListViewController
 
 class WatchListViewController: UIViewController {
     private var searchTimer: Timer?
+    private var floatingPanel: FloatingPanelController?
 
     // MARK: - Lifecycle
 
@@ -13,6 +15,7 @@ class WatchListViewController: UIViewController {
         view.backgroundColor = .systemBackground
 
         setUpSearchController()
+        setUpFloatingPanel()
         setUpTitleView()
     }
 
@@ -37,6 +40,16 @@ class WatchListViewController: UIViewController {
         label.font = .systemFont(ofSize: 38, weight: .bold)
         titleView.addSubview(label)
         navigationItem.titleView = titleView
+    }
+
+    private func setUpFloatingPanel() {
+        let contentViewController = TopStoriesViewController()
+        let panelController = FloatingPanelController(delegate: self)
+
+        panelController.surfaceView.backgroundColor = .secondarySystemBackground
+        panelController.set(contentViewController: contentViewController)
+        panelController.addPanel(toParent: self)
+        panelController.track(scrollView: contentViewController.tableView)
     }
 }
 
@@ -76,7 +89,20 @@ extension WatchListViewController: UISearchResultsUpdating {
 
 extension WatchListViewController: SearchResultsViewControllerDelegate {
     func searchResultsViewControllerDidSelect(searchResult: SearchResult) {
-        print("Did select \(searchResult.displaySymbol)")
+        let stockDetailsViewController = StockDetailsViewController()
+        let navigationViewController = UINavigationController(rootViewController: stockDetailsViewController)
+
+        navigationItem.searchController?.searchBar.resignFirstResponder()
+        stockDetailsViewController.title = searchResult.description
+        present(navigationViewController, animated: true)
+    }
+}
+
+// MARK: FloatingPanelControllerDelegate
+
+extension WatchListViewController: FloatingPanelControllerDelegate {
+    func floatingPanelDidChangeState(_ fpc: FloatingPanelController) {
+        navigationItem.titleView?.isHidden = fpc.state == .full
     }
 }
 
