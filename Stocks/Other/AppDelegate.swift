@@ -27,6 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     //FIXME: - Delete
     private func debug() {
-        
+        APICaller.shared.news(for: .company(symbol: "MSFT")) { result in
+            print(result)
+        }
     }
 }

@@ -27,6 +27,12 @@
 		9983D88D26C0F43600841455 /* FloatingPanel in Frameworks */ = {isa = PBXBuildFile; productRef = 9983D88C26C0F43600841455 /* FloatingPanel */; };
 		9983D89426C247CA00841455 /* NewsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9983D89326C247CA00841455 /* NewsHeaderView.swift */; };
 		998AACDF26C0F0A000D2F365 /* ExampleChildViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998AACDE26C0F0A000D2F365 /* ExampleChildViewController.swift */; };
+		99D0123726C3938600BCD834 /* NewsStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D0123626C3938600BCD834 /* NewsStory.swift */; };
+		99D0123926C396A400BCD834 /* DateFormatter+Foundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D0123826C396A400BCD834 /* DateFormatter+Foundation.swift */; };
+		99D0123B26C399B600BCD834 /* NewsStoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D0123A26C399B600BCD834 /* NewsStoryTableViewCell.swift */; };
+		99D0123D26C3A26B00BCD834 /* String+Foundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D0123C26C3A26B00BCD834 /* String+Foundation.swift */; };
+		99D0123F26C3A38F00BCD834 /* UIImageView+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D0123E26C3A38F00BCD834 /* UIImageView+UIKit.swift */; };
+		99D0124226C3A52D00BCD834 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 99D0124126C3A52D00BCD834 /* SDWebImage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +57,11 @@
 		990628FD26C00D6D001DBE44 /* SearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponse.swift; sourceTree = "<group>"; };
 		9983D89326C247CA00841455 /* NewsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsHeaderView.swift; sourceTree = "<group>"; };
 		998AACDE26C0F0A000D2F365 /* ExampleChildViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleChildViewController.swift; sourceTree = "<group>"; };
+		99D0123626C3938600BCD834 /* NewsStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsStory.swift; sourceTree = "<group>"; };
+		99D0123826C396A400BCD834 /* DateFormatter+Foundation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Foundation.swift"; sourceTree = "<group>"; };
+		99D0123A26C399B600BCD834 /* NewsStoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsStoryTableViewCell.swift; sourceTree = "<group>"; };
+		99D0123C26C3A26B00BCD834 /* String+Foundation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Foundation.swift"; sourceTree = "<group>"; };
+		99D0123E26C3A38F00BCD834 /* UIImageView+UIKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+UIKit.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99D0124226C3A52D00BCD834 /* SDWebImage in Frameworks */,
 				9983D88D26C0F43600841455 /* FloatingPanel in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -98,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				990628FD26C00D6D001DBE44 /* SearchResponse.swift */,
+				99D0123626C3938600BCD834 /* NewsStory.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -106,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				990628F726BFD609001DBE44 /* SearchResultTableViewCell.swift */,
+				99D0123A26C399B600BCD834 /* NewsStoryTableViewCell.swift */,
 				9983D89326C247CA00841455 /* NewsHeaderView.swift */,
 				990628D926BFA716001DBE44 /* LaunchScreen.storyboard */,
 			);
@@ -143,6 +157,9 @@
 				990628F326BFCD9A001DBE44 /* UIViewPreview.swift */,
 				990628FB26BFF9AC001DBE44 /* UIViewControllerPreview.swift */,
 				990628F526BFD24C001DBE44 /* UIView+UIKit.swift */,
+				99D0123826C396A400BCD834 /* DateFormatter+Foundation.swift */,
+				99D0123C26C3A26B00BCD834 /* String+Foundation.swift */,
+				99D0123E26C3A38F00BCD834 /* UIImageView+UIKit.swift */,
 				990628F926BFF852001DBE44 /* PreviewDevice.swift */,
 			);
 			path = Other;
@@ -166,6 +183,7 @@
 			name = Stocks;
 			packageProductDependencies = (
 				9983D88C26C0F43600841455 /* FloatingPanel */,
+				99D0124126C3A52D00BCD834 /* SDWebImage */,
 			);
 			productName = Stocks;
 			productReference = 990628CB26BFA714001DBE44 /* Stocks.app */;
@@ -196,6 +214,7 @@
 			mainGroup = 990628C226BFA714001DBE44;
 			packageReferences = (
 				9983D88B26C0F43600841455 /* XCRemoteSwiftPackageReference "FloatingPanel" */,
+				99D0124026C3A52D00BCD834 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = 990628CC26BFA714001DBE44 /* Products */;
 			projectDirPath = "";
@@ -227,13 +246,18 @@
 				990628EC26BFA889001DBE44 /* StockDetailsViewController.swift in Sources */,
 				990628F826BFD609001DBE44 /* SearchResultTableViewCell.swift in Sources */,
 				998AACDF26C0F0A000D2F365 /* ExampleChildViewController.swift in Sources */,
+				99D0123D26C3A26B00BCD834 /* String+Foundation.swift in Sources */,
+				99D0123726C3938600BCD834 /* NewsStory.swift in Sources */,
 				990628FC26BFF9AC001DBE44 /* UIViewControllerPreview.swift in Sources */,
+				99D0123F26C3A38F00BCD834 /* UIImageView+UIKit.swift in Sources */,
 				990628E826BFA835001DBE44 /* NewsViewController.swift in Sources */,
 				990628FA26BFF852001DBE44 /* PreviewDevice.swift in Sources */,
+				99D0123B26C399B600BCD834 /* NewsStoryTableViewCell.swift in Sources */,
 				990628D326BFA714001DBE44 /* WatchListViewController.swift in Sources */,
 				990628EE26BFAAAC001DBE44 /* APICaller.swift in Sources */,
 				990628F426BFCD9A001DBE44 /* UIViewPreview.swift in Sources */,
 				990628CF26BFA714001DBE44 /* AppDelegate.swift in Sources */,
+				99D0123926C396A400BCD834 /* DateFormatter+Foundation.swift in Sources */,
 				990628D126BFA714001DBE44 /* SceneDelegate.swift in Sources */,
 				9983D89426C247CA00841455 /* NewsHeaderView.swift in Sources */,
 				990628FE26C00D6D001DBE44 /* SearchResponse.swift in Sources */,
@@ -445,6 +469,14 @@
 				minimumVersion = 2.4.0;
 			};
 		};
+		99D0124026C3A52D00BCD834 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.11.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -452,6 +484,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9983D88B26C0F43600841455 /* XCRemoteSwiftPackageReference "FloatingPanel" */;
 			productName = FloatingPanel;
+		};
+		99D0124126C3A52D00BCD834 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 99D0124026C3A52D00BCD834 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

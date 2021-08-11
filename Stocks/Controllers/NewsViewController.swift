@@ -8,13 +8,21 @@ class NewsViewController: UIViewController {
 
         table.register(NewsHeaderView.self,
                        forHeaderFooterViewReuseIdentifier: NewsHeaderView.identifier)
+        table.register(NewsStoryTableViewCell.self,
+                       forCellReuseIdentifier: NewsStoryTableViewCell.identifier)
         table.backgroundColor = .clear
 
         return table
     }()
 
     private let type: NewsViewControllerType
-    private var stories: [String] = []
+    private var stories: [NewsStory] = [.init(category: "tech",
+                                              datetime: 123,
+                                              headline: "headline",
+                                              id: 1, image: "",
+                                              related: "relateed",
+                                              source: "Panorama",
+                                              summary: "", url: "")]
 
     enum NewsViewControllerType {
         case topStories
@@ -71,25 +79,7 @@ class NewsViewController: UIViewController {
 // MARK: UITableViewDelegate, UITableViewDataSource
 
 extension NewsViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        UITableViewCell()
-    }
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        0
-    }
-
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        140
-    }
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        NewsHeaderView.preferredHeight
-    }
+    // MARK: Header
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: NewsHeaderView.identifier) as? NewsHeaderView else {
@@ -98,6 +88,34 @@ extension NewsViewController: UITableViewDelegate, UITableViewDataSource {
         header.configure(with: .init(title: type.title, shouldShowAddButton: false))
 
         return header
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        NewsHeaderView.preferredHeight
+    }
+
+    // MARK: Cell
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView
+            .dequeueReusableCell(withIdentifier: NewsStoryTableViewCell.identifier, for: indexPath) as? NewsStoryTableViewCell else {
+            fatalError()
+        }
+        cell.configure(with: .init(model: stories[indexPath.row]))
+
+        return cell
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        NewsStoryTableViewCell.preferredHeight
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        stories.count
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
