@@ -1,3 +1,4 @@
+import SafariServices
 import UIKit
 
 // MARK: - NewsViewController
@@ -16,13 +17,7 @@ class NewsViewController: UIViewController {
     }()
 
     private let type: NewsViewControllerType
-    private var stories: [NewsStory] = [.init(category: "tech",
-                                              datetime: 123,
-                                              headline: "headline",
-                                              id: 1, image: "",
-                                              related: "relateed",
-                                              source: "Panorama",
-                                              summary: "", url: "")]
+    private var stories = [NewsStory]()
 
     enum NewsViewControllerType {
         case topStories
@@ -71,9 +66,35 @@ class NewsViewController: UIViewController {
         tableView.dataSource = self
     }
 
-    private func fetchNews() {}
+    private func fetchNews() {
+        APICaller.shared.news(for: .topStories) { [weak self] result in
+            switch result {
+            case let .success(stories):
+                DispatchQueue.main.async {
+                    self?.stories = stories
+                    self?.tableView.reloadData()
+                }
 
-    private func open(url: URL) {}
+            case let .failure(error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+
+    private func open(url: URL) {
+        let viewController = SFSafariViewController(url: url)
+
+        present(viewController, animated: true)
+    }
+
+    private func presentFailedToLoadAlert() {
+        let alert = UIAlertController(title: "Unable to open",
+                                      message: "We are unable to open article",
+                                      preferredStyle: .alert)
+
+        alert.addAction(.init(title: "Dismiss", style: .cancel, handler: nil))
+        present(alert, animated: true)
+    }
 }
 
 // MARK: UITableViewDelegate, UITableViewDataSource
@@ -116,6 +137,14 @@ extension NewsViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let story = stories[indexPath.row]
+
+        guard let url = URL(string: story.url) else {
+            presentFailedToLoadAlert()
+            return
+        }
+
+        open(url: url)
     }
 }
 

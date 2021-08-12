@@ -34,11 +34,11 @@ final class APICaller {
 
         case let .company(symbol: symbol):
             let today = Date()
-            let oneWeekBack = today.addingTimeInterval(-(Constants.day * 7))
+            let lastFewDays = today.addingTimeInterval(-(Constants.day * 3))
 
             request(url: url(forEndpoint: .companyNews,
                              queryParams: ["symbol": symbol,
-                                           "from": DateFormatter.newsDateFormatter.string(from: oneWeekBack),
+                                           "from": DateFormatter.newsDateFormatter.string(from: lastFewDays),
                                            "to": DateFormatter.newsDateFormatter.string(from: today)]),
                     expecting: [NewsStory].self,
                     completion: completion)
@@ -66,7 +66,7 @@ final class APICaller {
             queryItems.append(.init(name: name, value: value))
         }
 
-        queryItems.append(.init(name: "token", value: Constants.sandboxApiKey))
+        queryItems.append(.init(name: "token", value: Constants.apiKey))
         urlString += "?" + queryItems.map { "\($0.name)=\($0.value ?? "")" }.joined(separator: "&")
 
         return URL(string: urlString)
