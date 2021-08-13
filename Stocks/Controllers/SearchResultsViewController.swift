@@ -60,7 +60,7 @@ class SearchResultsViewController: UIViewController {
 // MARK: UITableViewDelegate, UITableViewDataSource
 
 extension SearchResultsViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         results.count
     }
 

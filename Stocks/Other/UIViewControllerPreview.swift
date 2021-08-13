@@ -9,12 +9,12 @@
 
         // MARK: - UIViewControllerRepresentable
 
-        func makeUIViewController(context: Context) -> ViewController {
+        func makeUIViewController(context _: Context) -> ViewController {
             viewController
         }
 
-        func updateUIViewController(_ uiViewController: ViewController,
-                                    context: UIViewControllerRepresentableContext<UIViewControllerPreview<ViewController>>) {}
+        func updateUIViewController(_: ViewController,
+                                    context _: UIViewControllerRepresentableContext<UIViewControllerPreview<ViewController>>) {}
     }
 #endif
 

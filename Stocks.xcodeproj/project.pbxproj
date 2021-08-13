@@ -16,7 +16,7 @@
 		990628EA26BFA878001DBE44 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990628E926BFA878001DBE44 /* SearchResultsViewController.swift */; };
 		990628EC26BFA889001DBE44 /* StockDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990628EB26BFA889001DBE44 /* StockDetailsViewController.swift */; };
 		990628EE26BFAAAC001DBE44 /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990628ED26BFAAAC001DBE44 /* APICaller.swift */; };
-		990628F026BFAAC3001DBE44 /* PersistanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990628EF26BFAAC3001DBE44 /* PersistanceManager.swift */; };
+		990628F026BFAAC3001DBE44 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990628EF26BFAAC3001DBE44 /* PersistenceManager.swift */; };
 		990628F226BFAAD3001DBE44 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990628F126BFAAD3001DBE44 /* HapticsManager.swift */; };
 		990628F426BFCD9A001DBE44 /* UIViewPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990628F326BFCD9A001DBE44 /* UIViewPreview.swift */; };
 		990628F626BFD24C001DBE44 /* UIView+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990628F526BFD24C001DBE44 /* UIView+UIKit.swift */; };
@@ -47,7 +47,7 @@
 		990628E926BFA878001DBE44 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
 		990628EB26BFA889001DBE44 /* StockDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDetailsViewController.swift; sourceTree = "<group>"; };
 		990628ED26BFAAAC001DBE44 /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
-		990628EF26BFAAC3001DBE44 /* PersistanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceManager.swift; sourceTree = "<group>"; };
+		990628EF26BFAAC3001DBE44 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		990628F126BFAAD3001DBE44 /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
 		990628F326BFCD9A001DBE44 /* UIViewPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewPreview.swift; sourceTree = "<group>"; };
 		990628F526BFD24C001DBE44 /* UIView+UIKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+UIKit.swift"; sourceTree = "<group>"; };
@@ -141,7 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				990628ED26BFAAAC001DBE44 /* APICaller.swift */,
-				990628EF26BFAAC3001DBE44 /* PersistanceManager.swift */,
+				990628EF26BFAAC3001DBE44 /* PersistenceManager.swift */,
 				990628F126BFAAD3001DBE44 /* HapticsManager.swift */,
 			);
 			path = Managers;
@@ -263,7 +263,7 @@
 				990628FE26C00D6D001DBE44 /* SearchResponse.swift in Sources */,
 				990628EA26BFA878001DBE44 /* SearchResultsViewController.swift in Sources */,
 				990628F626BFD24C001DBE44 /* UIView+UIKit.swift in Sources */,
-				990628F026BFAAC3001DBE44 /* PersistanceManager.swift in Sources */,
+				990628F026BFAAC3001DBE44 /* PersistenceManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

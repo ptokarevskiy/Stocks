@@ -16,7 +16,7 @@ class PanelViewController: UIViewController {
 }
 
 // On main view:
-//func setUpChildView() {
+// func setUpChildView() {
 //    let panelViewController  = PanelViewController()
 //
 //    addChild(panelViewController)
@@ -24,7 +24,7 @@ class PanelViewController: UIViewController {
 //    panelViewController.didMove(toParent: self)
 //    panelViewController.view.frame = .init(x: 0, y: view.height / 2, width: view.width, height: view.height)
 //
-//}
+// }
 
 #if canImport(SwiftUI) && DEBUG
     import SwiftUI

@@ -7,7 +7,7 @@ final class APICaller {
         static let apiKey = "c47snsqad3icscifmh70"
         static let sandboxApiKey = "sandbox_c47snsqad3icscifmh7g"
         static let baseURL = "https://finnhub.io/api/v1/"
-        static let day: TimeInterval = 3_600 * 24
+        static let day: TimeInterval = 3600 * 24
     }
 
     private init() {}
@@ -25,7 +25,8 @@ final class APICaller {
     }
 
     public func news(for type: NewsViewController.NewsViewControllerType,
-                     completion: @escaping (Result<[NewsStory], Error>) -> Void) {
+                     completion: @escaping (Result<[NewsStory], Error>) -> Void)
+    {
         switch type {
         case .topStories:
             request(url: url(forEndpoint: .topStories, queryParams: ["category": "general"]),

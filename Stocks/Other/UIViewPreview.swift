@@ -9,11 +9,11 @@
 
         // MARK: - UIViewRepresentable
 
-        func makeUIView(context: Context) -> UIView {
+        func makeUIView(context _: Context) -> UIView {
             view
         }
 
-        func updateUIView(_ view: UIView, context: Context) {
+        func updateUIView(_ view: UIView, context _: Context) {
             view.setContentHuggingPriority(.defaultHigh, for: .horizontal)
             view.setContentHuggingPriority(.defaultHigh, for: .vertical)
         }

@@ -6,6 +6,14 @@ import UIKit
 class WatchListViewController: UIViewController {
     private var searchTimer: Timer?
     private var floatingPanel: FloatingPanelController?
+    private var watchlistMap: [String: [String]] = [:]
+    private var viewModels: [String] = []
+
+    private let tableView: UITableView = {
+        let table = UITableView()
+
+        return table
+    }()
 
     // MARK: - Lifecycle
 
@@ -15,6 +23,8 @@ class WatchListViewController: UIViewController {
         view.backgroundColor = .systemBackground
 
         setUpSearchController()
+        setUpTableView()
+        setUpWatchlistData()
         setUpFloatingPanel()
         setUpTitleView()
     }
@@ -28,6 +38,22 @@ class WatchListViewController: UIViewController {
         resultsViewController.delegate = self
         searchViewController.searchResultsUpdater = self
         navigationItem.searchController = searchViewController
+    }
+
+    private func setUpTableView() {
+        view.addSubview(tableView)
+
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
+
+    private func setUpWatchlistData() {
+        let symbols = PersistenceManager.shared.watchlist
+        for symbol in symbols {
+            watchlistMap[symbol] = [""]
+        }
+
+        tableView.reloadData()
     }
 
     private func setUpTitleView() {
@@ -59,7 +85,8 @@ extension WatchListViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         guard let resultsViewController = searchController.searchResultsController as? SearchResultsViewController,
               let query = searchController.searchBar.text,
-              !query.trimmingCharacters(in: .whitespaces).isEmpty else {
+              !query.trimmingCharacters(in: .whitespaces).isEmpty
+        else {
             return
         }
 
@@ -103,6 +130,23 @@ extension WatchListViewController: SearchResultsViewControllerDelegate {
 extension WatchListViewController: FloatingPanelControllerDelegate {
     func floatingPanelDidChangeState(_ fpc: FloatingPanelController) {
         navigationItem.titleView?.isHidden = fpc.state == .full
+    }
+}
+
+// MARK: UITableViewDelegate, UITableViewDataSource
+
+extension WatchListViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_: UITableView, cellForRowAt _: IndexPath) -> UITableViewCell {
+        UITableViewCell()
+    }
+
+    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
+        watchlistMap.count
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        // Open details for selected row
     }
 }
 
