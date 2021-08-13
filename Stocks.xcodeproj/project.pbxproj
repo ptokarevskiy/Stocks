@@ -33,6 +33,7 @@
 		99D0123D26C3A26B00BCD834 /* String+Foundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D0123C26C3A26B00BCD834 /* String+Foundation.swift */; };
 		99D0123F26C3A38F00BCD834 /* UIImageView+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D0123E26C3A38F00BCD834 /* UIImageView+UIKit.swift */; };
 		99D0124226C3A52D00BCD834 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 99D0124126C3A52D00BCD834 /* SDWebImage */; };
+		99D4CB9926C63E8B008B1270 /* MarketDataResponce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D4CB9826C63E8B008B1270 /* MarketDataResponce.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		99D0123A26C399B600BCD834 /* NewsStoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsStoryTableViewCell.swift; sourceTree = "<group>"; };
 		99D0123C26C3A26B00BCD834 /* String+Foundation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Foundation.swift"; sourceTree = "<group>"; };
 		99D0123E26C3A38F00BCD834 /* UIImageView+UIKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+UIKit.swift"; sourceTree = "<group>"; };
+		99D4CB9826C63E8B008B1270 /* MarketDataResponce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketDataResponce.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 			children = (
 				990628FD26C00D6D001DBE44 /* SearchResponse.swift */,
 				99D0123626C3938600BCD834 /* NewsStory.swift */,
+				99D4CB9826C63E8B008B1270 /* MarketDataResponce.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 				99D0123D26C3A26B00BCD834 /* String+Foundation.swift in Sources */,
 				99D0123726C3938600BCD834 /* NewsStory.swift in Sources */,
 				990628FC26BFF9AC001DBE44 /* UIViewControllerPreview.swift in Sources */,
+				99D4CB9926C63E8B008B1270 /* MarketDataResponce.swift in Sources */,
 				99D0123F26C3A38F00BCD834 /* UIImageView+UIKit.swift in Sources */,
 				990628E826BFA835001DBE44 /* NewsViewController.swift in Sources */,
 				990628FA26BFF852001DBE44 /* PreviewDevice.swift in Sources */,
