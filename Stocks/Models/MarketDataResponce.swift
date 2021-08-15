@@ -30,7 +30,7 @@ struct MarketDataResponce: Codable {
                                 close: closePrices[index]))
         }
 
-        let sorted = result.sorted(by: { $0.date < $1.date })
+        let sorted = result.sorted(by: { $0.date > $1.date })
 
         return sorted
     }

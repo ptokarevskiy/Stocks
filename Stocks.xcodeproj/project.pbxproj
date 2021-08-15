@@ -24,11 +24,13 @@
 		990628FA26BFF852001DBE44 /* PreviewDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990628F926BFF852001DBE44 /* PreviewDevice.swift */; };
 		990628FC26BFF9AC001DBE44 /* UIViewControllerPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990628FB26BFF9AC001DBE44 /* UIViewControllerPreview.swift */; };
 		990628FE26C00D6D001DBE44 /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990628FD26C00D6D001DBE44 /* SearchResponse.swift */; };
+		992EB05226C7A70700164C8B /* WatchListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992EB05126C7A70700164C8B /* WatchListTableViewCell.swift */; };
+		992EB05426C7A89500164C8B /* StockChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992EB05326C7A89500164C8B /* StockChartView.swift */; };
 		9983D88D26C0F43600841455 /* FloatingPanel in Frameworks */ = {isa = PBXBuildFile; productRef = 9983D88C26C0F43600841455 /* FloatingPanel */; };
 		9983D89426C247CA00841455 /* NewsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9983D89326C247CA00841455 /* NewsHeaderView.swift */; };
 		998AACDF26C0F0A000D2F365 /* ExampleChildViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998AACDE26C0F0A000D2F365 /* ExampleChildViewController.swift */; };
 		99D0123726C3938600BCD834 /* NewsStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D0123626C3938600BCD834 /* NewsStory.swift */; };
-		99D0123926C396A400BCD834 /* DateFormatter+Foundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D0123826C396A400BCD834 /* DateFormatter+Foundation.swift */; };
+		99D0123926C396A400BCD834 /* Formatter+Foundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D0123826C396A400BCD834 /* Formatter+Foundation.swift */; };
 		99D0123B26C399B600BCD834 /* NewsStoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D0123A26C399B600BCD834 /* NewsStoryTableViewCell.swift */; };
 		99D0123D26C3A26B00BCD834 /* String+Foundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D0123C26C3A26B00BCD834 /* String+Foundation.swift */; };
 		99D0123F26C3A38F00BCD834 /* UIImageView+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D0123E26C3A38F00BCD834 /* UIImageView+UIKit.swift */; };
@@ -56,10 +58,12 @@
 		990628F926BFF852001DBE44 /* PreviewDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewDevice.swift; sourceTree = "<group>"; };
 		990628FB26BFF9AC001DBE44 /* UIViewControllerPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerPreview.swift; sourceTree = "<group>"; };
 		990628FD26C00D6D001DBE44 /* SearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponse.swift; sourceTree = "<group>"; };
+		992EB05126C7A70700164C8B /* WatchListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListTableViewCell.swift; sourceTree = "<group>"; };
+		992EB05326C7A89500164C8B /* StockChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockChartView.swift; sourceTree = "<group>"; };
 		9983D89326C247CA00841455 /* NewsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsHeaderView.swift; sourceTree = "<group>"; };
 		998AACDE26C0F0A000D2F365 /* ExampleChildViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleChildViewController.swift; sourceTree = "<group>"; };
 		99D0123626C3938600BCD834 /* NewsStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsStory.swift; sourceTree = "<group>"; };
-		99D0123826C396A400BCD834 /* DateFormatter+Foundation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Foundation.swift"; sourceTree = "<group>"; };
+		99D0123826C396A400BCD834 /* Formatter+Foundation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Formatter+Foundation.swift"; sourceTree = "<group>"; };
 		99D0123A26C399B600BCD834 /* NewsStoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsStoryTableViewCell.swift; sourceTree = "<group>"; };
 		99D0123C26C3A26B00BCD834 /* String+Foundation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Foundation.swift"; sourceTree = "<group>"; };
 		99D0123E26C3A38F00BCD834 /* UIImageView+UIKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+UIKit.swift"; sourceTree = "<group>"; };
@@ -122,6 +126,8 @@
 			isa = PBXGroup;
 			children = (
 				990628F726BFD609001DBE44 /* SearchResultTableViewCell.swift */,
+				992EB05126C7A70700164C8B /* WatchListTableViewCell.swift */,
+				992EB05326C7A89500164C8B /* StockChartView.swift */,
 				99D0123A26C399B600BCD834 /* NewsStoryTableViewCell.swift */,
 				9983D89326C247CA00841455 /* NewsHeaderView.swift */,
 				990628D926BFA716001DBE44 /* LaunchScreen.storyboard */,
@@ -160,7 +166,7 @@
 				990628F326BFCD9A001DBE44 /* UIViewPreview.swift */,
 				990628FB26BFF9AC001DBE44 /* UIViewControllerPreview.swift */,
 				990628F526BFD24C001DBE44 /* UIView+UIKit.swift */,
-				99D0123826C396A400BCD834 /* DateFormatter+Foundation.swift */,
+				99D0123826C396A400BCD834 /* Formatter+Foundation.swift */,
 				99D0123C26C3A26B00BCD834 /* String+Foundation.swift */,
 				99D0123E26C3A38F00BCD834 /* UIImageView+UIKit.swift */,
 				990628F926BFF852001DBE44 /* PreviewDevice.swift */,
@@ -252,6 +258,7 @@
 				99D0123D26C3A26B00BCD834 /* String+Foundation.swift in Sources */,
 				99D0123726C3938600BCD834 /* NewsStory.swift in Sources */,
 				990628FC26BFF9AC001DBE44 /* UIViewControllerPreview.swift in Sources */,
+				992EB05426C7A89500164C8B /* StockChartView.swift in Sources */,
 				99D4CB9926C63E8B008B1270 /* MarketDataResponce.swift in Sources */,
 				99D0123F26C3A38F00BCD834 /* UIImageView+UIKit.swift in Sources */,
 				990628E826BFA835001DBE44 /* NewsViewController.swift in Sources */,
@@ -261,11 +268,12 @@
 				990628EE26BFAAAC001DBE44 /* APICaller.swift in Sources */,
 				990628F426BFCD9A001DBE44 /* UIViewPreview.swift in Sources */,
 				990628CF26BFA714001DBE44 /* AppDelegate.swift in Sources */,
-				99D0123926C396A400BCD834 /* DateFormatter+Foundation.swift in Sources */,
+				99D0123926C396A400BCD834 /* Formatter+Foundation.swift in Sources */,
 				990628D126BFA714001DBE44 /* SceneDelegate.swift in Sources */,
 				9983D89426C247CA00841455 /* NewsHeaderView.swift in Sources */,
 				990628FE26C00D6D001DBE44 /* SearchResponse.swift in Sources */,
 				990628EA26BFA878001DBE44 /* SearchResultsViewController.swift in Sources */,
+				992EB05226C7A70700164C8B /* WatchListTableViewCell.swift in Sources */,
 				990628F626BFD24C001DBE44 /* UIView+UIKit.swift in Sources */,
 				990628F026BFAAC3001DBE44 /* PersistenceManager.swift in Sources */,
 			);
@@ -407,7 +415,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = W6D72DC997;
+				DEVELOPMENT_TEAM = Y5Z7U643V7;
 				INFOPLIST_FILE = Stocks/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -427,7 +435,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = W6D72DC997;
+				DEVELOPMENT_TEAM = Y5Z7U643V7;
 				INFOPLIST_FILE = Stocks/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (

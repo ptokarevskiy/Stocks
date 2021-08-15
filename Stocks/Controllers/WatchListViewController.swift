@@ -7,7 +7,7 @@ class WatchListViewController: UIViewController {
     private var searchTimer: Timer?
     private var floatingPanel: FloatingPanelController?
     private var watchlistMap: [String: [CandleStick]] = [:]
-    private var viewModels: [String] = []
+    private var viewModels: [WatchListTableViewCell.ViewModel] = []
 
     private let tableView: UITableView = {
         let table = UITableView()
@@ -47,6 +47,36 @@ class WatchListViewController: UIViewController {
         tableView.dataSource = self
     }
 
+    private func setUpTitleView() {
+        let titleView: UIView = .init(frame: .init(x: 0,
+                                                   y: 0,
+                                                   width: view.width,
+                                                   height: navigationController?.navigationBar.height ?? 100))
+        let label: UILabel = {
+            let label = UILabel(frame: .init(x: 10,
+                                             y: 0,
+                                             width: titleView.width - 20,
+                                             height: titleView.height))
+            label.text = "Stocks"
+            label.font = .systemFont(ofSize: 38, weight: .bold)
+
+            return label
+        }()
+
+        titleView.addSubview(label)
+        navigationItem.titleView = titleView
+    }
+
+    private func setUpFloatingPanel() {
+        let contentViewController = NewsViewController(type: .topStories)
+        let panelController = FloatingPanelController(delegate: self)
+
+        panelController.surfaceView.backgroundColor = .secondarySystemBackground
+        panelController.set(contentViewController: contentViewController)
+        panelController.addPanel(toParent: self)
+        panelController.track(scrollView: contentViewController.tableView)
+    }
+
     private func fetchWatchlistData() {
         let symbols = PersistenceManager.shared.watchlist
         let group = DispatchGroup()
@@ -71,32 +101,46 @@ class WatchListViewController: UIViewController {
         }
 
         group.notify(queue: .main) { [weak self] in
+            self?.createViewModels()
             self?.tableView.reloadData()
         }
-
-        tableView.reloadData()
     }
 
-    private func setUpTitleView() {
-        let titleView: UIView = .init(frame: .init(x: 0,
-                                                   y: 0,
-                                                   width: view.width,
-                                                   height: navigationController?.navigationBar.height ?? 100))
-        let label = UILabel(frame: .init(x: 10, y: 0, width: titleView.width - 20, height: titleView.height))
-        label.text = "Stocks"
-        label.font = .systemFont(ofSize: 38, weight: .bold)
-        titleView.addSubview(label)
-        navigationItem.titleView = titleView
+    private func createViewModels() {
+        var viewModels = [WatchListTableViewCell.ViewModel]()
+        for (symbol, candleSticks) in watchlistMap {
+            let changePercentage = getChangePercentage(symbol: symbol, data: candleSticks)
+
+            viewModels.append(.init(symbol: symbol,
+                                    companyName: UserDefaults.standard.string(forKey: symbol) ?? "Company",
+                                    price: getLatestClosingPrice(for: candleSticks),
+                                    changeColor: changePercentage < 0 ? .systemRed : .systemGreen,
+                                    changePercentage: .percentage(from: changePercentage)))
+        }
+
+        self.viewModels = viewModels
     }
 
-    private func setUpFloatingPanel() {
-        let contentViewController = NewsViewController(type: .topStories)
-        let panelController = FloatingPanelController(delegate: self)
+    private func getLatestClosingPrice(for data: [CandleStick]) -> String {
+        guard let closingPrice = data.first?.close else {
+            return ""
+        }
 
-        panelController.surfaceView.backgroundColor = .secondarySystemBackground
-        panelController.set(contentViewController: contentViewController)
-        panelController.addPanel(toParent: self)
-        panelController.track(scrollView: contentViewController.tableView)
+        return .formatted(number: closingPrice)
+    }
+
+    private func getChangePercentage(symbol _: String, data: [CandleStick]) -> Double {
+        let latestDate = data[0].date
+
+        guard let latestClose = data.first?.close,
+              let priorClose = data.first(where: { !Calendar.current.isDate($0.date, inSameDayAs: latestDate) })?.close
+        else {
+            return 0.0
+        }
+
+        let difference = 1 - (priorClose / latestClose)
+
+        return difference
     }
 }
 
@@ -150,7 +194,9 @@ extension WatchListViewController: SearchResultsViewControllerDelegate {
 
 extension WatchListViewController: FloatingPanelControllerDelegate {
     func floatingPanelDidChangeState(_ fpc: FloatingPanelController) {
-        navigationItem.titleView?.isHidden = fpc.state == .full
+        UIView.animate(withDuration: 1) { [weak self] in
+            self?.navigationItem.titleView?.isHidden = fpc.state == .full
+        }
     }
 }
 
