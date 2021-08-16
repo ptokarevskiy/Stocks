@@ -28,15 +28,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     // FIXME: - Delete
-    private func debug() {
-        APICaller.shared.marketData(for: "AAPL", numberOfDays: 1) { result in
-            switch result {
-            case let .success(marketData):
-                print(marketData.candleSticks)
-
-            case let .failure(error):
-                print(error)
-            }
-        }
-    }
+    private func debug() {}
 }

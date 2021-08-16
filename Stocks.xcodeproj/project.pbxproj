@@ -26,6 +26,7 @@
 		990628FE26C00D6D001DBE44 /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990628FD26C00D6D001DBE44 /* SearchResponse.swift */; };
 		992EB05226C7A70700164C8B /* WatchListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992EB05126C7A70700164C8B /* WatchListTableViewCell.swift */; };
 		992EB05426C7A89500164C8B /* StockChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992EB05326C7A89500164C8B /* StockChartView.swift */; };
+		992EB05626CA2C4700164C8B /* Notification+Foundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992EB05526CA2C4700164C8B /* Notification+Foundation.swift */; };
 		9983D88D26C0F43600841455 /* FloatingPanel in Frameworks */ = {isa = PBXBuildFile; productRef = 9983D88C26C0F43600841455 /* FloatingPanel */; };
 		9983D89426C247CA00841455 /* NewsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9983D89326C247CA00841455 /* NewsHeaderView.swift */; };
 		998AACDF26C0F0A000D2F365 /* ExampleChildViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998AACDE26C0F0A000D2F365 /* ExampleChildViewController.swift */; };
@@ -60,6 +61,7 @@
 		990628FD26C00D6D001DBE44 /* SearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponse.swift; sourceTree = "<group>"; };
 		992EB05126C7A70700164C8B /* WatchListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListTableViewCell.swift; sourceTree = "<group>"; };
 		992EB05326C7A89500164C8B /* StockChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockChartView.swift; sourceTree = "<group>"; };
+		992EB05526CA2C4700164C8B /* Notification+Foundation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Foundation.swift"; sourceTree = "<group>"; };
 		9983D89326C247CA00841455 /* NewsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsHeaderView.swift; sourceTree = "<group>"; };
 		998AACDE26C0F0A000D2F365 /* ExampleChildViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleChildViewController.swift; sourceTree = "<group>"; };
 		99D0123626C3938600BCD834 /* NewsStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsStory.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 				99D0123826C396A400BCD834 /* Formatter+Foundation.swift */,
 				99D0123C26C3A26B00BCD834 /* String+Foundation.swift */,
 				99D0123E26C3A38F00BCD834 /* UIImageView+UIKit.swift */,
+				992EB05526CA2C4700164C8B /* Notification+Foundation.swift */,
 				990628F926BFF852001DBE44 /* PreviewDevice.swift */,
 			);
 			path = Other;
@@ -268,6 +271,7 @@
 				990628EE26BFAAAC001DBE44 /* APICaller.swift in Sources */,
 				990628F426BFCD9A001DBE44 /* UIViewPreview.swift in Sources */,
 				990628CF26BFA714001DBE44 /* AppDelegate.swift in Sources */,
+				992EB05626CA2C4700164C8B /* Notification+Foundation.swift in Sources */,
 				99D0123926C396A400BCD834 /* Formatter+Foundation.swift in Sources */,
 				990628D126BFA714001DBE44 /* SceneDelegate.swift in Sources */,
 				9983D89426C247CA00841455 /* NewsHeaderView.swift in Sources */,

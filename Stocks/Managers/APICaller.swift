@@ -84,8 +84,6 @@ final class APICaller {
 
         queryItems.append(.init(name: "token", value: Constants.apiKey))
         urlString += "?" + queryItems.map { "\($0.name)=\($0.value ?? "")" }.joined(separator: "&")
-        // FIXME: - Delete
-        print(urlString)
 
         return URL(string: urlString)
     }
