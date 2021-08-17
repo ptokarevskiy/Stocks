@@ -255,7 +255,7 @@ extension WatchListViewController: UITableViewDelegate, UITableViewDataSource {
                                                         candleStickData: watchlistMap[viewModel.symbol] ?? [])
         let navigationController = UINavigationController(rootViewController: viewController)
 
-        viewController.title = viewModel.companyName
+//        viewController.title = viewModel.companyName
         tableView.deselectRow(at: indexPath, animated: true)
         present(navigationController, animated: true)
     }

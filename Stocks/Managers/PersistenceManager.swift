@@ -23,6 +23,10 @@ final class PersistenceManager {
         return userDefaults.stringArray(forKey: Constants.watchlistKey) ?? []
     }
 
+    public func watchListContains(symbol: String) -> Bool {
+        watchlist.contains(symbol)
+    }
+
     public func addToWatchList(symbol: String, companyName: String) {
         var newList = watchlist
 
@@ -57,7 +61,7 @@ final class PersistenceManager {
             "FB": "Facebook Inc.",
             "NVDA": "Nvidia Inc.",
             "NKE": "Nike",
-            "PINS": "Pinterest Inc.",
+            "PINS": "Pinterest Inc."
         ]
 
         let symbols = map.keys.map { $0 }
