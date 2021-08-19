@@ -61,7 +61,7 @@ final class PersistenceManager {
             "FB": "Facebook Inc.",
             "NVDA": "Nvidia Inc.",
             "NKE": "Nike",
-            "PINS": "Pinterest Inc."
+            "PINS": "Pinterest Inc.",
         ]
 
         let symbols = map.keys.map { $0 }

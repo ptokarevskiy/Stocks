@@ -18,10 +18,9 @@ final class APICaller {
         guard let safeQuery = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
             return
         }
+        let url = url(forEndpoint: .search, queryParams: ["q": safeQuery])
 
-        request(url: url(forEndpoint: .search, queryParams: ["q": safeQuery]),
-                expecting: SearchResponse.self,
-                completion: completion)
+        request(url: url, expecting: SearchResponse.self, completion: completion)
     }
 
     public func news(for type: NewsViewController.NewsViewControllerType,
@@ -29,20 +28,19 @@ final class APICaller {
     {
         switch type {
         case .topStories:
-            request(url: url(forEndpoint: .topStories, queryParams: ["category": "general"]),
-                    expecting: [NewsStory].self,
-                    completion: completion)
+            let url = url(forEndpoint: .topStories, queryParams: ["category": "general"])
+
+            request(url: url, expecting: [NewsStory].self, completion: completion)
 
         case let .company(symbol: symbol):
             let today = Date()
             let lastFewDays = today.addingTimeInterval(-(Constants.day * 3))
+            let url = url(forEndpoint: .companyNews,
+                          queryParams: ["symbol": symbol,
+                                        "from": DateFormatter.newsDateFormatter.string(from: lastFewDays),
+                                        "to": DateFormatter.newsDateFormatter.string(from: today)])
 
-            request(url: url(forEndpoint: .companyNews,
-                             queryParams: ["symbol": symbol,
-                                           "from": DateFormatter.newsDateFormatter.string(from: lastFewDays),
-                                           "to": DateFormatter.newsDateFormatter.string(from: today)]),
-                    expecting: [NewsStory].self,
-                    completion: completion)
+            request(url: url, expecting: [NewsStory].self, completion: completion)
         }
     }
 
@@ -60,6 +58,15 @@ final class APICaller {
         request(url: url, expecting: MarketDataResponce.self, completion: completion)
     }
 
+    public func financialMetrics(for symbol: String,
+                                 completion: @escaping (Result<FinancialMetricsResponse, Error>) -> Void)
+    {
+        let url = url(forEndpoint: .metrics, queryParams: ["symbol": symbol,
+                                                           "metric": "all"])
+
+        request(url: url, expecting: FinancialMetricsResponse.self, completion: completion)
+    }
+
     // MARK: - Private
 
     private enum Endpoint: String {
@@ -67,6 +74,7 @@ final class APICaller {
         case topStories = "news"
         case companyNews = "company-news"
         case marketData = "stock/candle"
+        case metrics = "stock/metric"
     }
 
     private enum APIError: Error {

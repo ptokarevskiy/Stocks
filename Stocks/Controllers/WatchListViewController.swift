@@ -149,7 +149,8 @@ class WatchListViewController: UIViewController {
         let latestDate = data[0].date
 
         guard let latestClose = data.first?.close,
-              let priorClose = data.first(where: { !Calendar.current.isDate($0.date, inSameDayAs: latestDate) })?.close else {
+              let priorClose = data.first(where: { !Calendar.current.isDate($0.date, inSameDayAs: latestDate) })?.close
+        else {
             return 0.0
         }
 
@@ -175,7 +176,8 @@ extension WatchListViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         guard let resultsViewController = searchController.searchResultsController as? SearchResultsViewController,
               let query = searchController.searchBar.text,
-              !query.trimmingCharacters(in: .whitespaces).isEmpty else {
+              !query.trimmingCharacters(in: .whitespaces).isEmpty
+        else {
             return
         }
 
@@ -230,7 +232,8 @@ extension WatchListViewController: FloatingPanelControllerDelegate {
 extension WatchListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: WatchListTableViewCell.identifier,
-                                                       for: indexPath) as? WatchListTableViewCell else {
+                                                       for: indexPath) as? WatchListTableViewCell
+        else {
             fatalError()
         }
 

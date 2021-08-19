@@ -27,6 +27,9 @@
 		992EB05226C7A70700164C8B /* WatchListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992EB05126C7A70700164C8B /* WatchListTableViewCell.swift */; };
 		992EB05426C7A89500164C8B /* StockChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992EB05326C7A89500164C8B /* StockChartView.swift */; };
 		992EB05626CA2C4700164C8B /* Notification+Foundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992EB05526CA2C4700164C8B /* Notification+Foundation.swift */; };
+		992EB06726CCCE1300164C8B /* FinancialMetricsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992EB06626CCCE1300164C8B /* FinancialMetricsResponse.swift */; };
+		992EB06926CCD20100164C8B /* StockDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992EB06826CCD20100164C8B /* StockDetailHeaderView.swift */; };
+		99368C7526CE1B1700B3114F /* MetricCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99368C7426CE1B1700B3114F /* MetricCollectionViewCell.swift */; };
 		9983D88D26C0F43600841455 /* FloatingPanel in Frameworks */ = {isa = PBXBuildFile; productRef = 9983D88C26C0F43600841455 /* FloatingPanel */; };
 		9983D89426C247CA00841455 /* NewsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9983D89326C247CA00841455 /* NewsHeaderView.swift */; };
 		998AACDF26C0F0A000D2F365 /* ExampleChildViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998AACDE26C0F0A000D2F365 /* ExampleChildViewController.swift */; };
@@ -62,6 +65,9 @@
 		992EB05126C7A70700164C8B /* WatchListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListTableViewCell.swift; sourceTree = "<group>"; };
 		992EB05326C7A89500164C8B /* StockChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockChartView.swift; sourceTree = "<group>"; };
 		992EB05526CA2C4700164C8B /* Notification+Foundation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Foundation.swift"; sourceTree = "<group>"; };
+		992EB06626CCCE1300164C8B /* FinancialMetricsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialMetricsResponse.swift; sourceTree = "<group>"; };
+		992EB06826CCD20100164C8B /* StockDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDetailHeaderView.swift; sourceTree = "<group>"; };
+		99368C7426CE1B1700B3114F /* MetricCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricCollectionViewCell.swift; sourceTree = "<group>"; };
 		9983D89326C247CA00841455 /* NewsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsHeaderView.swift; sourceTree = "<group>"; };
 		998AACDE26C0F0A000D2F365 /* ExampleChildViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleChildViewController.swift; sourceTree = "<group>"; };
 		99D0123626C3938600BCD834 /* NewsStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsStory.swift; sourceTree = "<group>"; };
@@ -117,9 +123,10 @@
 		990628E226BFA781001DBE44 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				990628FD26C00D6D001DBE44 /* SearchResponse.swift */,
-				99D0123626C3938600BCD834 /* NewsStory.swift */,
+				992EB06626CCCE1300164C8B /* FinancialMetricsResponse.swift */,
 				99D4CB9826C63E8B008B1270 /* MarketDataResponce.swift */,
+				99D0123626C3938600BCD834 /* NewsStory.swift */,
+				990628FD26C00D6D001DBE44 /* SearchResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -127,12 +134,14 @@
 		990628E326BFA788001DBE44 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				990628F726BFD609001DBE44 /* SearchResultTableViewCell.swift */,
-				992EB05126C7A70700164C8B /* WatchListTableViewCell.swift */,
-				992EB05326C7A89500164C8B /* StockChartView.swift */,
-				99D0123A26C399B600BCD834 /* NewsStoryTableViewCell.swift */,
-				9983D89326C247CA00841455 /* NewsHeaderView.swift */,
 				990628D926BFA716001DBE44 /* LaunchScreen.storyboard */,
+				99368C7426CE1B1700B3114F /* MetricCollectionViewCell.swift */,
+				9983D89326C247CA00841455 /* NewsHeaderView.swift */,
+				99D0123A26C399B600BCD834 /* NewsStoryTableViewCell.swift */,
+				990628F726BFD609001DBE44 /* SearchResultTableViewCell.swift */,
+				992EB05326C7A89500164C8B /* StockChartView.swift */,
+				992EB06826CCD20100164C8B /* StockDetailHeaderView.swift */,
+				992EB05126C7A70700164C8B /* WatchListTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -140,9 +149,9 @@
 		990628E426BFA790001DBE44 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				990628E726BFA835001DBE44 /* NewsViewController.swift */,
 				990628E926BFA878001DBE44 /* SearchResultsViewController.swift */,
 				990628EB26BFA889001DBE44 /* StockDetailsViewController.swift */,
-				990628E726BFA835001DBE44 /* NewsViewController.swift */,
 				990628D226BFA714001DBE44 /* WatchListViewController.swift */,
 			);
 			path = Controllers;
@@ -263,10 +272,12 @@
 				990628FC26BFF9AC001DBE44 /* UIViewControllerPreview.swift in Sources */,
 				992EB05426C7A89500164C8B /* StockChartView.swift in Sources */,
 				99D4CB9926C63E8B008B1270 /* MarketDataResponce.swift in Sources */,
+				992EB06926CCD20100164C8B /* StockDetailHeaderView.swift in Sources */,
 				99D0123F26C3A38F00BCD834 /* UIImageView+UIKit.swift in Sources */,
 				990628E826BFA835001DBE44 /* NewsViewController.swift in Sources */,
 				990628FA26BFF852001DBE44 /* PreviewDevice.swift in Sources */,
 				99D0123B26C399B600BCD834 /* NewsStoryTableViewCell.swift in Sources */,
+				99368C7526CE1B1700B3114F /* MetricCollectionViewCell.swift in Sources */,
 				990628D326BFA714001DBE44 /* WatchListViewController.swift in Sources */,
 				990628EE26BFAAAC001DBE44 /* APICaller.swift in Sources */,
 				990628F426BFCD9A001DBE44 /* UIViewPreview.swift in Sources */,
@@ -277,6 +288,7 @@
 				9983D89426C247CA00841455 /* NewsHeaderView.swift in Sources */,
 				990628FE26C00D6D001DBE44 /* SearchResponse.swift in Sources */,
 				990628EA26BFA878001DBE44 /* SearchResultsViewController.swift in Sources */,
+				992EB06726CCCE1300164C8B /* FinancialMetricsResponse.swift in Sources */,
 				992EB05226C7A70700164C8B /* WatchListTableViewCell.swift in Sources */,
 				990628F626BFD24C001DBE44 /* UIView+UIKit.swift in Sources */,
 				990628F026BFAAC3001DBE44 /* PersistenceManager.swift in Sources */,
