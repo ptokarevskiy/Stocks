@@ -43,9 +43,10 @@ class StockDetailHeaderView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    public func configure(chartViewModel _: StockChartView.ViewModel,
-                          metricsViewModels: [MetricCollectionViewCell.ViewModel])
-    {
+    public func configure(chartViewModel: StockChartView.ViewModel,
+                          metricsViewModels: [MetricCollectionViewCell.ViewModel]) {
+        chartView.configure(with: chartViewModel)
+
         self.metricsViewModels = metricsViewModels
         collectionView.reloadData()
     }
@@ -66,8 +67,7 @@ extension StockDetailHeaderView: UICollectionViewDelegate, UICollectionViewDataS
         let viewModel = metricsViewModels[indexPath.row]
 
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MetricCollectionViewCell.identifier,
-                                                            for: indexPath) as? MetricCollectionViewCell
-        else {
+                                                            for: indexPath) as? MetricCollectionViewCell else {
             fatalError()
         }
 

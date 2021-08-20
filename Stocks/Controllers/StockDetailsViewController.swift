@@ -84,6 +84,20 @@ class StockDetailsViewController: UIViewController {
 
         if candleStickData.isEmpty {
             group.enter()
+
+            APICaller.shared.marketData(for: symbol) { [weak self] result in
+                defer {
+                    group.leave()
+                }
+
+                switch result {
+                case let .success(data):
+                    self?.candleStickData = data.candleSticks
+
+                case let .failure(error):
+                    print(error.localizedDescription)
+                }
+            }
         }
 
         group.enter()
@@ -122,7 +136,9 @@ class StockDetailsViewController: UIViewController {
             viewModels.append(.init(name: "10D Vol", value: metrics.averageTradingVolume.description))
         }
 
-        headerView.configure(chartViewModel: .init(data: [], showLegend: false, showAxis: false),
+        headerView.configure(chartViewModel: .init(data: candleStickData.reversed().map(\.close),
+                                                   showLegend: false,
+                                                   showAxis: true),
                              metricsViewModels: viewModels)
         tableView.tableHeaderView = headerView
     }
@@ -176,8 +192,7 @@ extension StockDetailsViewController: UITableViewDelegate, UITableViewDataSource
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: NewsStoryTableViewCell.identifier,
-                                                       for: indexPath) as? NewsStoryTableViewCell
-        else {
+                                                       for: indexPath) as? NewsStoryTableViewCell else {
             fatalError()
         }
         cell.configure(with: .init(model: stories[indexPath.row]))

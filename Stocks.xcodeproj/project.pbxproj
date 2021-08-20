@@ -33,6 +33,7 @@
 		9983D88D26C0F43600841455 /* FloatingPanel in Frameworks */ = {isa = PBXBuildFile; productRef = 9983D88C26C0F43600841455 /* FloatingPanel */; };
 		9983D89426C247CA00841455 /* NewsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9983D89326C247CA00841455 /* NewsHeaderView.swift */; };
 		998AACDF26C0F0A000D2F365 /* ExampleChildViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998AACDE26C0F0A000D2F365 /* ExampleChildViewController.swift */; };
+		99BBCFAE26CF7E190097B6DB /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 99BBCFAD26CF7E190097B6DB /* Charts */; };
 		99D0123726C3938600BCD834 /* NewsStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D0123626C3938600BCD834 /* NewsStory.swift */; };
 		99D0123926C396A400BCD834 /* Formatter+Foundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D0123826C396A400BCD834 /* Formatter+Foundation.swift */; };
 		99D0123B26C399B600BCD834 /* NewsStoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D0123A26C399B600BCD834 /* NewsStoryTableViewCell.swift */; };
@@ -84,6 +85,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				99D0124226C3A52D00BCD834 /* SDWebImage in Frameworks */,
+				99BBCFAE26CF7E190097B6DB /* Charts in Frameworks */,
 				9983D88D26C0F43600841455 /* FloatingPanel in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -205,6 +207,7 @@
 			packageProductDependencies = (
 				9983D88C26C0F43600841455 /* FloatingPanel */,
 				99D0124126C3A52D00BCD834 /* SDWebImage */,
+				99BBCFAD26CF7E190097B6DB /* Charts */,
 			);
 			productName = Stocks;
 			productReference = 990628CB26BFA714001DBE44 /* Stocks.app */;
@@ -236,6 +239,7 @@
 			packageReferences = (
 				9983D88B26C0F43600841455 /* XCRemoteSwiftPackageReference "FloatingPanel" */,
 				99D0124026C3A52D00BCD834 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				99BBCFAC26CF7E190097B6DB /* XCRemoteSwiftPackageReference "Charts" */,
 			);
 			productRefGroup = 990628CC26BFA714001DBE44 /* Products */;
 			projectDirPath = "";
@@ -497,6 +501,14 @@
 				minimumVersion = 2.4.0;
 			};
 		};
+		99BBCFAC26CF7E190097B6DB /* XCRemoteSwiftPackageReference "Charts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielgindi/Charts";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.1;
+			};
+		};
 		99D0124026C3A52D00BCD834 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
@@ -512,6 +524,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9983D88B26C0F43600841455 /* XCRemoteSwiftPackageReference "FloatingPanel" */;
 			productName = FloatingPanel;
+		};
+		99BBCFAD26CF7E190097B6DB /* Charts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 99BBCFAC26CF7E190097B6DB /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = Charts;
 		};
 		99D0124126C3A52D00BCD834 /* SDWebImage */ = {
 			isa = XCSwiftPackageProductDependency;
