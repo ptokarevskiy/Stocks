@@ -192,7 +192,8 @@ extension StockDetailsViewController: UITableViewDelegate, UITableViewDataSource
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: NewsStoryTableViewCell.identifier,
-                                                       for: indexPath) as? NewsStoryTableViewCell else {
+                                                       for: indexPath) as? NewsStoryTableViewCell
+        else {
             fatalError()
         }
         cell.configure(with: .init(model: stories[indexPath.row]))
@@ -208,6 +209,8 @@ extension StockDetailsViewController: UITableViewDelegate, UITableViewDataSource
         guard let url = URL(string: stories[indexPath.row].url) else { return }
         let webView = SFSafariViewController(url: url)
 
+        HapticsManager.shared.vibrateForSelection()
+
         tableView.deselectRow(at: indexPath, animated: true)
         present(webView, animated: true)
     }
@@ -219,6 +222,7 @@ extension StockDetailsViewController: NewsHeaderViewDelegate {
     func newsHeaderViewDidAddButton(_ headerView: NewsHeaderView) {
         headerView.button.isHidden = true
         PersistenceManager.shared.addToWatchList(symbol: symbol, companyName: companyName)
+        HapticsManager.shared.vibrate(for: .success)
 
         let alert: UIAlertController = {
             let alert = UIAlertController(title: "Added to Watchlist",

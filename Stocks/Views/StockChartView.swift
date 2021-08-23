@@ -17,6 +17,8 @@ class StockChartView: UIView {
         chartView.leftAxis.enabled = false
         chartView.rightAxis.enabled = false
         chartView.legend.enabled = false
+        chartView.pinchZoomEnabled = false
+        chartView.doubleTapToZoomEnabled = false
 
         return chartView
     }()

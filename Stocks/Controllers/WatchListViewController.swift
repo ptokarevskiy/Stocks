@@ -211,6 +211,8 @@ extension WatchListViewController: SearchResultsViewControllerDelegate {
                                                                     companyName: searchResult.description)
         let navigationViewController = UINavigationController(rootViewController: stockDetailsViewController)
 
+        HapticsManager.shared.vibrateForSelection()
+
         navigationItem.searchController?.searchBar.resignFirstResponder()
         stockDetailsViewController.title = searchResult.description
         present(navigationViewController, animated: true)
@@ -257,6 +259,8 @@ extension WatchListViewController: UITableViewDelegate, UITableViewDataSource {
                                                         companyName: viewModel.companyName,
                                                         candleStickData: watchlistMap[viewModel.symbol] ?? [])
         let navigationController = UINavigationController(rootViewController: viewController)
+
+        HapticsManager.shared.vibrateForSelection()
 
         tableView.deselectRow(at: indexPath, animated: true)
         present(navigationController, animated: true)

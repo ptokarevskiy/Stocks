@@ -14,6 +14,10 @@ final class APICaller {
 
     // MARK: - Public
 
+    /// Search company by name or symbol
+    /// - Parameters:
+    ///   - query: search term
+    ///   - completion: completion block
     public func search(query: String, completion: @escaping (Result<SearchResponse, Error>) -> Void) {
         guard let safeQuery = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
             return
@@ -23,6 +27,10 @@ final class APICaller {
         request(url: url, expecting: SearchResponse.self, completion: completion)
     }
 
+    /// Returns global or company related news
+    /// - Parameters:
+    ///   - type: top news or company
+    ///   - completion: completion block
     public func news(for type: NewsViewController.NewsViewControllerType,
                      completion: @escaping (Result<[NewsStory], Error>) -> Void)
     {
@@ -44,9 +52,14 @@ final class APICaller {
         }
     }
 
+    /// Returns market data for company
+    /// - Parameters:
+    ///   - symbol: company symbol
+    ///   - numberOfDays: fetch period. default 7 days
+    ///   - completion: completion block
     public func marketData(for symbol: String,
                            numberOfDays: TimeInterval = 7,
-                           completion: @escaping (Result<MarketDataResponce, Error>) -> Void)
+                           completion: @escaping (Result<MarketDataResponse, Error>) -> Void)
     {
         let today = Date().addingTimeInterval(-(Constants.day * 2))
         let lastFewDays = today.addingTimeInterval(-(Constants.day * numberOfDays))
@@ -55,7 +68,7 @@ final class APICaller {
                                                               "from": "\(Int(lastFewDays.timeIntervalSince1970))",
                                                               "to": "\(Int(today.timeIntervalSince1970))"])
 
-        request(url: url, expecting: MarketDataResponce.self, completion: completion)
+        request(url: url, expecting: MarketDataResponse.self, completion: completion)
     }
 
     public func financialMetrics(for symbol: String,
@@ -78,10 +91,15 @@ final class APICaller {
     }
 
     private enum APIError: Error {
-        case unvalidURL
+        case invalidURL
         case noDataReturn
     }
 
+    /// Returns url for given endpoint and query parameters
+    /// - Parameters:
+    ///   - endpoint: one of search / topStories / ,,,
+    ///   - queryParams: query parameters
+    /// - Returns: URL
     private func url(forEndpoint endpoint: Endpoint, queryParams: [String: String] = [:]) -> URL? {
         var urlString = Constants.baseURL + endpoint.rawValue
         var queryItems = [URLQueryItem]()
@@ -96,9 +114,14 @@ final class APICaller {
         return URL(string: urlString)
     }
 
+    /// Generic function for URL Requests
+    /// - Parameters:
+    ///   - url: url
+    ///   - expecting: expecting return data type
+    ///   - completion: completion block
     private func request<T: Codable>(url: URL?, expecting: T.Type, completion: @escaping (Result<T, Error>) -> Void) {
         guard let url = url else {
-            completion(.failure(APIError.unvalidURL))
+            completion(.failure(APIError.invalidURL))
 
             return
         }

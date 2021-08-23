@@ -1,13 +1,13 @@
 import Foundation
 
-// MARK: - MarketDataResponce
+// MARK: - MarketDataResponse
 
-struct MarketDataResponce: Codable {
+struct MarketDataResponse: Codable {
     let openPrices: [Double]
     let closePrices: [Double]
     let highPrices: [Double]
     let lowPrices: [Double]
-    let status: String // Enum? "ok" / "no_data"
+    let status: String // "ok" / "no_data"
     let timestamps: [TimeInterval]
 
     enum CodingKeys: String, CodingKey {
