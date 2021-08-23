@@ -6,6 +6,7 @@ class StockChartView: UIView {
         let data: [Double]
         let showLegend: Bool
         let showAxis: Bool
+        let fillColor: UIColor
     }
 
     private let chartView: LineChartView = {
@@ -54,11 +55,12 @@ class StockChartView: UIView {
         let dataSet = LineChartDataSet(entries: entries, label: "Legend")
         let data = LineChartData(dataSet: dataSet)
 
-        dataSet.fillColor = .systemBlue
+        dataSet.fillColor = viewModel.fillColor
         dataSet.drawFilledEnabled = true
         dataSet.drawIconsEnabled = false
         dataSet.drawValuesEnabled = false
         dataSet.drawCirclesEnabled = false
+
         chartView.data = data
     }
 }

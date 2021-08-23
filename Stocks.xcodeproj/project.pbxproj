@@ -35,6 +35,7 @@
 		998AACDF26C0F0A000D2F365 /* ExampleChildViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998AACDE26C0F0A000D2F365 /* ExampleChildViewController.swift */; };
 		99BBCFAE26CF7E190097B6DB /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 99BBCFAD26CF7E190097B6DB /* Charts */; };
 		99BBCFBF26D126AC0097B6DB /* StocksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BBCFBE26D126AC0097B6DB /* StocksTests.swift */; };
+		99BBCFC726D36A0F0097B6DB /* Array+Foundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BBCFC626D36A0F0097B6DB /* Array+Foundation.swift */; };
 		99D0123726C3938600BCD834 /* NewsStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D0123626C3938600BCD834 /* NewsStory.swift */; };
 		99D0123926C396A400BCD834 /* Formatter+Foundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D0123826C396A400BCD834 /* Formatter+Foundation.swift */; };
 		99D0123B26C399B600BCD834 /* NewsStoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D0123A26C399B600BCD834 /* NewsStoryTableViewCell.swift */; };
@@ -85,6 +86,7 @@
 		99BBCFBC26D126AC0097B6DB /* StocksTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StocksTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		99BBCFBE26D126AC0097B6DB /* StocksTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksTests.swift; sourceTree = "<group>"; };
 		99BBCFC026D126AC0097B6DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		99BBCFC626D36A0F0097B6DB /* Array+Foundation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Foundation.swift"; sourceTree = "<group>"; };
 		99D0123626C3938600BCD834 /* NewsStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsStory.swift; sourceTree = "<group>"; };
 		99D0123826C396A400BCD834 /* Formatter+Foundation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Formatter+Foundation.swift"; sourceTree = "<group>"; };
 		99D0123A26C399B600BCD834 /* NewsStoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsStoryTableViewCell.swift; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 				99D0123826C396A400BCD834 /* Formatter+Foundation.swift */,
 				99D0123C26C3A26B00BCD834 /* String+Foundation.swift */,
 				99D0123E26C3A38F00BCD834 /* UIImageView+UIKit.swift */,
+				99BBCFC626D36A0F0097B6DB /* Array+Foundation.swift */,
 				992EB05526CA2C4700164C8B /* Notification+Foundation.swift */,
 				990628F926BFF852001DBE44 /* PreviewDevice.swift */,
 			);
@@ -357,6 +360,7 @@
 				992EB06726CCCE1300164C8B /* FinancialMetricsResponse.swift in Sources */,
 				992EB05226C7A70700164C8B /* WatchListTableViewCell.swift in Sources */,
 				990628F626BFD24C001DBE44 /* UIView+UIKit.swift in Sources */,
+				99BBCFC726D36A0F0097B6DB /* Array+Foundation.swift in Sources */,
 				990628F026BFAAC3001DBE44 /* PersistenceManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

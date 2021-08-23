@@ -136,9 +136,11 @@ class StockDetailsViewController: UIViewController {
             viewModels.append(.init(name: "10D Vol", value: metrics.averageTradingVolume.description))
         }
 
+        let change = candleStickData.getPercentage()
         headerView.configure(chartViewModel: .init(data: candleStickData.reversed().map(\.close),
                                                    showLegend: false,
-                                                   showAxis: true),
+                                                   showAxis: true,
+                                                   fillColor: change < 0 ? .systemRed : .systemGreen),
                              metricsViewModels: viewModels)
         tableView.tableHeaderView = headerView
     }
