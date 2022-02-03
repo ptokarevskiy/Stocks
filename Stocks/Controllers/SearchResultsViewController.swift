@@ -86,7 +86,7 @@ extension SearchResultsViewController: UITableViewDelegate, UITableViewDataSourc
     import SwiftUI
 
     @available(iOS 14.0, *)
-    struct SearchResultsViewController_Preview: PreviewProvider {
+    struct SearchResultsViewControllerPreview: PreviewProvider {
         static var previews: some View {
             UIViewControllerPreview {
                 UINavigationController(rootViewController: SearchResultsViewController())

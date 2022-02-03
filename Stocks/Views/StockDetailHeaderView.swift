@@ -4,7 +4,6 @@ import UIKit
 
 class StockDetailHeaderView: UIView {
     private var metricsViewModels: [MetricCollectionViewCell.ViewModel] = []
-    // Chart view
     private let chartView = StockChartView()
 
     private let collectionView: UICollectionView = {
@@ -12,7 +11,6 @@ class StockDetailHeaderView: UIView {
         layout.scrollDirection = .horizontal
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 0
-//        layout.sectionInset = .init(top: 0, left: 0, bottom: 0, right: 0)
 
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .secondarySystemBackground
@@ -31,6 +29,11 @@ class StockDetailHeaderView: UIView {
         collectionView.dataSource = self
     }
 
+    @available(*, unavailable)
+    required init?(coder _: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     override func layoutSubviews() {
         super.layoutSubviews()
 
@@ -38,14 +41,8 @@ class StockDetailHeaderView: UIView {
         collectionView.frame = .init(x: 0, y: height - 100, width: width, height: 100)
     }
 
-    @available(*, unavailable)
-    required init?(coder _: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
     public func configure(chartViewModel: StockChartView.ViewModel,
-                          metricsViewModels: [MetricCollectionViewCell.ViewModel])
-    {
+                          metricsViewModels: [MetricCollectionViewCell.ViewModel]) {
         chartView.configure(with: chartViewModel)
 
         self.metricsViewModels = metricsViewModels
@@ -68,8 +65,7 @@ extension StockDetailHeaderView: UICollectionViewDelegate, UICollectionViewDataS
         let viewModel = metricsViewModels[indexPath.row]
 
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MetricCollectionViewCell.identifier,
-                                                            for: indexPath) as? MetricCollectionViewCell
-        else {
+                                                            for: indexPath) as? MetricCollectionViewCell else {
             fatalError()
         }
 
@@ -78,9 +74,7 @@ extension StockDetailHeaderView: UICollectionViewDelegate, UICollectionViewDataS
         return cell
     }
 
-    func collectionView(_: UICollectionView, layout _: UICollectionViewLayout,
-                        sizeForItemAt _: IndexPath) -> CGSize
-    {
+    func collectionView(_: UICollectionView, layout _: UICollectionViewLayout, sizeForItemAt _: IndexPath) -> CGSize {
         CGSize(width: width / 2, height: 100 / 3)
     }
 }

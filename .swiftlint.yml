@@ -1,0 +1,87 @@
+disabled_rules:
+  - file_length
+  - function_body_length
+  - function_parameter_count
+  - inclusive_language
+  - todo
+  - type_body_length
+opt_in_rules:
+  - anyobject_protocol
+  - array_init
+  - balanced_xctest_lifecycle
+  - capture_variable
+  - closure_end_indentation
+  - closure_spacing
+  - collection_alignment
+  - contains_over_filter_count
+  - contains_over_filter_is_empty
+  - contains_over_first_not_nil
+  - contains_over_range_nil_comparison
+  - convenience_type
+  - empty_string
+  - explicit_init
+  - first_where
+  - flatmap_over_map_reduce
+  - function_default_parameter_at_end
+  - function_parameter_count
+  - identical_operands
+  - implicit_return
+  - last_where
+  - let_var_whitespace
+  - literal_expression_end_indentation
+  - multiline_arguments
+  - multiline_parameters
+  - no_space_in_method_call
+  - number_separator
+  - operator_usage_whitespace
+  - overridden_super_call
+  - pattern_matching_keywords
+  - prefer_self_type_over_type_of_self
+  - prefer_zero_over_explicit_init
+  - prefixed_toplevel_constant
+  - prohibited_super_call
+  - raw_value_for_camel_cased_codable_enum
+  - reduce_into
+  - redundant_nil_coalescing
+  - single_test_class
+  - sorted_first_last
+  - static_operator
+  - switch_case_on_newline
+  - test_case_accessibility
+  - toggle_bool
+  - type_contents_order
+  - unavailable_function
+  - unneeded_parentheses_in_closure_argument
+  - unowned_variable_capture
+  - unused_declaration
+  - unused_import
+  - vertical_parameter_alignment_on_call
+  - vertical_whitespace_between_cases
+  - vertical_whitespace_closing_braces
+  - vertical_whitespace_opening_braces
+  - xct_specific_matcher
+  - yoda_condition
+warning_threshold: 40
+force_cast: warning
+force_try: warning
+large_tuple:
+   - 3 # warning
+   - 4 # error
+line_length:
+    warning: 140
+    error: 170
+identifier_name:
+  min_length: 2 # only warning
+  max_length: # warning and error
+    warning: 40
+    error: 50
+nesting:
+  type_level: 2
+reporter: "xcode"
+custom_rules:
+  print_usage:
+    included: ".*\\.swift"
+    name: "Logging System"
+    regex: "((\\bprint)|(Swift\\.print))\\s*\\("
+    message: "Don't use print for logging"
+    severity: warning

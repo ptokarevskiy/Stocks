@@ -1,24 +1,10 @@
+import os.log
 import SafariServices
 import UIKit
 
 // MARK: - NewsViewController
 
 class NewsViewController: UIViewController {
-    let tableView: UITableView = {
-        let table = UITableView()
-
-        table.register(NewsHeaderView.self,
-                       forHeaderFooterViewReuseIdentifier: NewsHeaderView.identifier)
-        table.register(NewsStoryTableViewCell.self,
-                       forCellReuseIdentifier: NewsStoryTableViewCell.identifier)
-        table.backgroundColor = .clear
-
-        return table
-    }()
-
-    private let type: NewsViewControllerType
-    private var stories = [NewsStory]()
-
     enum NewsViewControllerType {
         case topStories
         case company(symbol: String)
@@ -33,6 +19,11 @@ class NewsViewController: UIViewController {
             }
         }
     }
+
+    let tableView: UITableView = .init()
+
+    private let type: NewsViewControllerType
+    private var stories = [NewsStory]()
 
     init(type: NewsViewControllerType) {
         self.type = type
@@ -60,6 +51,11 @@ class NewsViewController: UIViewController {
     // MARK: - Private
 
     private func setUpTableView() {
+        tableView.register(NewsHeaderView.self,
+                           forHeaderFooterViewReuseIdentifier: NewsHeaderView.identifier)
+        tableView.register(NewsStoryTableViewCell.self,
+                           forCellReuseIdentifier: NewsStoryTableViewCell.identifier)
+        tableView.backgroundColor = .clear
         view.addSubview(tableView)
 
         tableView.delegate = self
@@ -67,7 +63,7 @@ class NewsViewController: UIViewController {
     }
 
     private func fetchNews() {
-        APICaller.shared.news(for: .topStories) { [weak self] result in
+        APIManager.shared.news(for: .topStories) { [weak self] result in
             switch result {
             case let .success(stories):
                 DispatchQueue.main.async {
@@ -76,7 +72,7 @@ class NewsViewController: UIViewController {
                 }
 
             case let .failure(error):
-                print(error.localizedDescription)
+                os_log(.error, "Unable to fetch news with reason: '%{public}@'", error.localizedDescription)
             }
         }
     }
@@ -127,11 +123,11 @@ extension NewsViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView
-            .dequeueReusableCell(withIdentifier: NewsStoryTableViewCell.identifier, for: indexPath) as? NewsStoryTableViewCell
-        else {
+            .dequeueReusableCell(withIdentifier: NewsStoryTableViewCell.identifier, for: indexPath) as? NewsStoryTableViewCell else {
             fatalError()
         }
         cell.configure(with: .init(model: stories[indexPath.row]))
+        cell.accessibilityIdentifier = "news_controller.table_cell"
 
         return cell
     }
@@ -163,7 +159,7 @@ extension NewsViewController: UITableViewDelegate, UITableViewDataSource {
     import SwiftUI
 
     @available(iOS 14.0, *)
-    struct NewsViewController_Preview: PreviewProvider {
+    struct NewsViewControllerPreview: PreviewProvider {
         static var previews: some View {
             UIViewControllerPreview {
                 UINavigationController(rootViewController: NewsViewController(type: .topStories))

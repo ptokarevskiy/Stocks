@@ -64,6 +64,14 @@
             case iPhone12Pro = "iPhone 12 Pro"
             /// iPhone 12 Pro Max
             case iPhone12ProMax = "iPhone 12 Pro Max"
+            /// iPhone 13 Pro
+            case iPhone13Pro = "iPhone 13 Pro"
+            /// iPhone 13 Pro Max
+            case iPhone13ProMax = "iPhone 13 Pro Max"
+            /// iPhone 13 mini
+            case iPhone13Mini = "iPhone 13 mini"
+            /// iPhone 13
+            case iPhone13 = "iPhone 13"
         }
     }
 #endif

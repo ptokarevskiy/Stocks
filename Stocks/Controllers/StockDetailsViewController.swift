@@ -1,3 +1,4 @@
+import os.log
 import SafariServices
 import UIKit
 
@@ -10,7 +11,7 @@ class StockDetailsViewController: UIViewController {
     private let companyName: String
     private var candleStickData: [CandleStick]
     private var stories: [NewsStory] = []
-    private var metrics: Metrics?
+    private var metrics: FinancialMetricsResponse.Metrics?
 
     private let tableView: UITableView = {
         let table = UITableView()
@@ -85,7 +86,7 @@ class StockDetailsViewController: UIViewController {
         if candleStickData.isEmpty {
             group.enter()
 
-            APICaller.shared.marketData(for: symbol) { [weak self] result in
+            APIManager.shared.marketData(for: symbol) { [weak self] result in
                 defer {
                     group.leave()
                 }
@@ -95,13 +96,16 @@ class StockDetailsViewController: UIViewController {
                     self?.candleStickData = data.candleSticks
 
                 case let .failure(error):
-                    print(error.localizedDescription)
+                    os_log(.debug,
+                           "Failed to fetch market data for %{public}@ with error: <%{public}@>",
+                           self?.symbol ?? "<empty>",
+                           error.localizedDescription)
                 }
             }
         }
 
         group.enter()
-        APICaller.shared.financialMetrics(for: symbol) { [weak self] result in
+        APIManager.shared.financialMetrics(for: symbol) { [weak self] result in
             defer {
                 group.leave()
             }
@@ -112,7 +116,10 @@ class StockDetailsViewController: UIViewController {
                 self?.metrics = metrics
 
             case let .failure(error):
-                print(error)
+                os_log(.debug,
+                       "Failed to fetch financial metrics for %{public}@ with error: <%{public}@>",
+                       self?.symbol ?? "<empty>",
+                       error.localizedDescription)
             }
         }
 
@@ -146,7 +153,7 @@ class StockDetailsViewController: UIViewController {
     }
 
     private func fetchNews() {
-        APICaller.shared.news(for: .company(symbol: symbol)) { [weak self] result in
+        APIManager.shared.news(for: .company(symbol: symbol)) { [weak self] result in
             switch result {
             case let .success(stories):
                 DispatchQueue.main.async {
@@ -155,7 +162,10 @@ class StockDetailsViewController: UIViewController {
                 }
 
             case let .failure(error):
-                print(error.localizedDescription)
+                os_log(.debug,
+                       "Failed to fetch financial metrics for %{public}@ with error: <%{public}@>",
+                       self?.symbol ?? "<empty>",
+                       error.localizedDescription)
             }
         }
     }
@@ -194,8 +204,7 @@ extension StockDetailsViewController: UITableViewDelegate, UITableViewDataSource
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: NewsStoryTableViewCell.identifier,
-                                                       for: indexPath) as? NewsStoryTableViewCell
-        else {
+                                                       for: indexPath) as? NewsStoryTableViewCell else {
             fatalError()
         }
         cell.configure(with: .init(model: stories[indexPath.row]))
@@ -243,7 +252,7 @@ extension StockDetailsViewController: NewsHeaderViewDelegate {
     import SwiftUI
 
     @available(iOS 14.0, *)
-    struct StockDetailsViewController_Preview: PreviewProvider {
+    struct StockDetailsViewControllerPreview: PreviewProvider {
         static var previews: some View {
             UIViewControllerPreview {
                 UINavigationController(rootViewController: StockDetailsViewController(symbol: "SNAP", companyName: "Snapchat"))

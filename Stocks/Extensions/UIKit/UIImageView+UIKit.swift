@@ -21,5 +21,3 @@ extension UIImageView {
         }
     }
 }
-
-//        storyImageView.setImage(with: viewModel.imageURL)

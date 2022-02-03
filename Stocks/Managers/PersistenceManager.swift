@@ -1,18 +1,17 @@
 import Foundation
 
 final class PersistenceManager {
-    static let shared = PersistenceManager()
-
-    private let userDefaults: UserDefaults = .standard
-
     private enum Constants {
         static let onboardedKey = "hasOnboarded"
         static let watchlistKey = "watchlist"
     }
 
-    private init() {}
+    static let shared = PersistenceManager()
 
-    // MARK: - Public
+    private let userDefaults: UserDefaults = .standard
+    private var hasOnboarded: Bool {
+        userDefaults.bool(forKey: Constants.onboardedKey)
+    }
 
     var watchlist: [String] {
         if !hasOnboarded {
@@ -22,6 +21,10 @@ final class PersistenceManager {
 
         return userDefaults.stringArray(forKey: Constants.watchlistKey) ?? []
     }
+
+    private init() {}
+
+    // MARK: - Public
 
     public func watchListContains(symbol: String) -> Bool {
         watchlist.contains(symbol)
@@ -47,27 +50,20 @@ final class PersistenceManager {
 
     // MARK: - Private
 
-    private var hasOnboarded: Bool {
-        userDefaults.bool(forKey: Constants.onboardedKey)
-    }
-
     private func setUpDefaults() {
-        let map: [String: String] = [
+        let defaultStocks: [String: String] = [
             "AAPL": "Apple Inc.",
             "MSFT": "Microsoft Corporation",
-            "SNAP": "Snap Inc.",
             "GOOG": "Alphabet",
             "AMZN": "Amazon.com Inc.",
-            "FB": "Facebook Inc.",
-            "NVDA": "Nvidia Inc.",
-            "NKE": "Nike",
-            "PINS": "Pinterest Inc.",
+            "FB": "Meta Inc.",
+            "NVDA": "Nvidia Inc."
         ]
 
-        let symbols = map.keys.map { $0 }
+        let symbols = defaultStocks.map(\.key)
         userDefaults.set(symbols, forKey: Constants.watchlistKey)
 
-        for (symbol, name) in map {
+        for (symbol, name) in defaultStocks {
             userDefaults.set(name, forKey: symbol)
         }
     }

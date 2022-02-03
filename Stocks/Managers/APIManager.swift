@@ -1,14 +1,27 @@
 import Foundation
 
-final class APICaller {
-    static let shared = APICaller()
-
+final class APIManager {
     private enum Constants {
         static let apiKey = "c47snsqad3icscifmh70"
         static let sandboxApiKey = "sandbox_c47snsqad3icscifmh7g"
         static let baseURL = "https://finnhub.io/api/v1/"
-        static let day: TimeInterval = 3600 * 24
+        static let day: TimeInterval = 3_600 * 24
     }
+
+    private enum Endpoint: String {
+        case search
+        case topStories = "news"
+        case companyNews = "company-news"
+        case marketData = "stock/candle"
+        case metrics = "stock/metric"
+    }
+
+    private enum APIError: Error {
+        case invalidURL
+        case noDataReturn
+    }
+
+    static let shared = APIManager()
 
     private init() {}
 
@@ -22,6 +35,7 @@ final class APICaller {
         guard let safeQuery = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
             return
         }
+
         let url = url(forEndpoint: .search, queryParams: ["q": safeQuery])
 
         request(url: url, expecting: SearchResponse.self, completion: completion)
@@ -32,8 +46,7 @@ final class APICaller {
     ///   - type: top news or company
     ///   - completion: completion block
     public func news(for type: NewsViewController.NewsViewControllerType,
-                     completion: @escaping (Result<[NewsStory], Error>) -> Void)
-    {
+                     completion: @escaping (Result<[NewsStory], Error>) -> Void) {
         switch type {
         case .topStories:
             let url = url(forEndpoint: .topStories, queryParams: ["category": "general"])
@@ -59,8 +72,7 @@ final class APICaller {
     ///   - completion: completion block
     public func marketData(for symbol: String,
                            numberOfDays: TimeInterval = 7,
-                           completion: @escaping (Result<MarketDataResponse, Error>) -> Void)
-    {
+                           completion: @escaping (Result<MarketDataResponse, Error>) -> Void) {
         let today = Date().addingTimeInterval(-(Constants.day * 2))
         let lastFewDays = today.addingTimeInterval(-(Constants.day * numberOfDays))
         let url = url(forEndpoint: .marketData, queryParams: ["symbol": symbol,
@@ -72,8 +84,7 @@ final class APICaller {
     }
 
     public func financialMetrics(for symbol: String,
-                                 completion: @escaping (Result<FinancialMetricsResponse, Error>) -> Void)
-    {
+                                 completion: @escaping (Result<FinancialMetricsResponse, Error>) -> Void) {
         let url = url(forEndpoint: .metrics, queryParams: ["symbol": symbol,
                                                            "metric": "all"])
 
@@ -81,19 +92,6 @@ final class APICaller {
     }
 
     // MARK: - Private
-
-    private enum Endpoint: String {
-        case search
-        case topStories = "news"
-        case companyNews = "company-news"
-        case marketData = "stock/candle"
-        case metrics = "stock/metric"
-    }
-
-    private enum APIError: Error {
-        case invalidURL
-        case noDataReturn
-    }
 
     /// Returns url for given endpoint and query parameters
     /// - Parameters:

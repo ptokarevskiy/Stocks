@@ -2,6 +2,7 @@ import Foundation
 
 // MARK: - MarketDataResponse
 
+// swiftlint:disable type_contents_order
 struct MarketDataResponse: Codable {
     let openPrices: [Double]
     let closePrices: [Double]
@@ -20,19 +21,15 @@ struct MarketDataResponse: Codable {
     }
 
     var candleSticks: [CandleStick] {
-        var result = [CandleStick]()
-
-        for index in 0 ..< openPrices.count {
-            result.append(.init(date: Date(timeIntervalSince1970: timestamps[index]),
-                                high: highPrices[index],
-                                low: lowPrices[index],
-                                open: openPrices[index],
-                                close: closePrices[index]))
-        }
-
-        let sorted = result.sorted(by: { $0.date > $1.date })
-
-        return sorted
+        openPrices
+            .enumerated()
+            .map { index, price in
+                CandleStick(date: Date(timeIntervalSince1970: timestamps[index]),
+                            high: highPrices[index],
+                            low: lowPrices[index],
+                            open: price,
+                            close: closePrices[index])
+            }.sorted(by: { $0.date > $1.date })
     }
 }
 

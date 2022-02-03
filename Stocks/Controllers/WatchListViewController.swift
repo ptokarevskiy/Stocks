@@ -1,24 +1,18 @@
 import FloatingPanel
+import os.log
 import UIKit
 
 // MARK: - WatchListViewController
 
 class WatchListViewController: UIViewController {
+    static var maxChangeWidth: CGFloat = 0
+
+    private let tableView: UITableView = .init()
+
     private var searchTimer: Timer?
     private var floatingPanel: FloatingPanelController?
     private var watchlistMap: [String: [CandleStick]] = [:]
     private var viewModels: [WatchListTableViewCell.ViewModel] = []
-
-    static var maxChangeWidth: CGFloat = 0
-
-    private let tableView: UITableView = {
-        let table = UITableView()
-        table.register(WatchListTableViewCell.self,
-                       forCellReuseIdentifier: WatchListTableViewCell.identifier)
-
-        return table
-    }()
-
     private var observer: NSObjectProtocol?
 
     // MARK: - Lifecycle
@@ -42,6 +36,12 @@ class WatchListViewController: UIViewController {
         tableView.frame = view.bounds
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        navigationItem.hidesSearchBarWhenScrolling = true
+    }
+
     // MARK: - Private
 
     private func setUpSearchController() {
@@ -51,9 +51,13 @@ class WatchListViewController: UIViewController {
         resultsViewController.delegate = self
         searchViewController.searchResultsUpdater = self
         navigationItem.searchController = searchViewController
+        navigationItem.hidesSearchBarWhenScrolling = false
     }
 
     private func setUpTableView() {
+        tableView.register(WatchListTableViewCell.self,
+                           forCellReuseIdentifier: WatchListTableViewCell.identifier)
+        tableView.accessibilityIdentifier = "watchlist.table_view"
         view.addSubview(tableView)
 
         tableView.delegate = self
@@ -61,10 +65,14 @@ class WatchListViewController: UIViewController {
     }
 
     private func setUpTitleView() {
+        guard let navigationBar = navigationController?.navigationBar else {
+            return
+        }
+
         let titleView: UIView = .init(frame: .init(x: 0,
                                                    y: 0,
                                                    width: view.width,
-                                                   height: navigationController?.navigationBar.height ?? 100))
+                                                   height: navigationBar.height))
         let label: UILabel = {
             let label = UILabel(frame: .init(x: 10,
                                              y: 0,
@@ -100,7 +108,7 @@ class WatchListViewController: UIViewController {
         for symbol in symbols where watchlistMap[symbol] == nil {
             group.enter()
 
-            APICaller.shared.marketData(for: symbol) { [weak self] result in
+            APIManager.shared.marketData(for: symbol) { [weak self] result in
                 defer {
                     group.leave()
                 }
@@ -111,7 +119,10 @@ class WatchListViewController: UIViewController {
                     self?.watchlistMap[symbol] = candleSticks
 
                 case let .failure(error):
-                    print(error)
+                    os_log(.debug,
+                           "Failed to fetch market data for %{public}@ with error: <%{public}@>",
+                           symbol,
+                           error.localizedDescription)
                 }
             }
         }
@@ -128,9 +139,9 @@ class WatchListViewController: UIViewController {
         symbols.forEach { item in
             viewModels.append(.init(symbol: item,
                                     companyName: UserDefaults.standard.string(forKey: item) ?? "",
-                                    price: "0.00",
+                                    price: "Loading...",
                                     changeColor: .systemGreen,
-                                    changePercentage: "0.00",
+                                    changePercentage: "",
                                     chartViewModel: .init(data: [],
                                                           showLegend: false,
                                                           showAxis: false,
@@ -185,15 +196,14 @@ extension WatchListViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         guard let resultsViewController = searchController.searchResultsController as? SearchResultsViewController,
               let query = searchController.searchBar.text,
-              !query.trimmingCharacters(in: .whitespaces).isEmpty
-        else {
+              !query.trimmingCharacters(in: .whitespaces).isEmpty else {
             return
         }
 
         searchTimer?.invalidate()
 
         searchTimer = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: false, block: { _ in
-            APICaller.shared.search(query: query) { result in
+            APIManager.shared.search(query: query) { result in
                 switch result {
                 case let .success(response):
                     DispatchQueue.main.async {
@@ -205,7 +215,10 @@ extension WatchListViewController: UISearchResultsUpdating {
                         resultsViewController.update(withResults: [])
                     }
 
-                    print(error.localizedDescription)
+                    os_log(.debug,
+                           "Failed to fetch search results for query <%{public}@> with error: <%{public}@>",
+                           query,
+                           error.localizedDescription)
                 }
             }
         })
@@ -243,13 +256,13 @@ extension WatchListViewController: FloatingPanelControllerDelegate {
 extension WatchListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: WatchListTableViewCell.identifier,
-                                                       for: indexPath) as? WatchListTableViewCell
-        else {
+                                                       for: indexPath) as? WatchListTableViewCell else {
             fatalError()
         }
 
         cell.configure(with: viewModels[indexPath.row])
         cell.delegate = self
+        cell.accessibilityIdentifier = "watchlist.company_cell"
 
         return cell
     }
@@ -313,7 +326,7 @@ extension WatchListViewController: WatchListTableViewCellDelegate {
     import SwiftUI
 
     @available(iOS 14.0, *)
-    struct WatchListViewController_Preview: PreviewProvider {
+    struct WatchListViewControllerPreview: PreviewProvider {
         static var previews: some View {
             Group {
                 UIViewControllerPreview {

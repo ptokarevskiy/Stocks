@@ -9,11 +9,6 @@ protocol WatchListTableViewCellDelegate: AnyObject {
 // MARK: - WatchListTableViewCell
 
 class WatchListTableViewCell: UITableViewCell {
-    static let identifier = "WatchListTableViewCell"
-    static let preferredHeight: CGFloat = 70
-
-    weak var delegate: WatchListTableViewCellDelegate?
-
     struct ViewModel {
         let symbol: String
         let companyName: String
@@ -22,6 +17,11 @@ class WatchListTableViewCell: UITableViewCell {
         let changePercentage: String
         let chartViewModel: StockChartView.ViewModel
     }
+
+    static let identifier = "WatchListTableViewCell"
+    static let preferredHeight: CGFloat = 70
+
+    weak var delegate: WatchListTableViewCellDelegate?
 
     private let symbolLabel: UILabel = {
         let label = UILabel()

@@ -9,15 +9,15 @@ protocol NewsHeaderViewDelegate: AnyObject {
 // MARK: - NewsHeaderView
 
 class NewsHeaderView: UITableViewHeaderFooterView {
-    static let identifier = "NewsHeaderView"
-    static let preferredHeight: CGFloat = 70
-
-    weak var delegate: NewsHeaderViewDelegate?
-
     struct ViewModel {
         let title: String
         let shouldShowAddButton: Bool
     }
+
+    static let identifier = "NewsHeaderView"
+    static let preferredHeight: CGFloat = 70
+
+    weak var delegate: NewsHeaderViewDelegate?
 
     private let label: UILabel = {
         let label = UILabel()

@@ -2,9 +2,6 @@ import SDWebImage
 import UIKit
 
 class NewsStoryTableViewCell: UITableViewCell {
-    static let identifier = "NewsStoryTableViewCell"
-    static let preferredHeight: CGFloat = 140
-
     struct ViewModel {
         let source: String
         let headline: String
@@ -18,6 +15,9 @@ class NewsStoryTableViewCell: UITableViewCell {
             imageURL = URL(string: model.image)
         }
     }
+
+    static let identifier = "NewsStoryTableViewCell"
+    static let preferredHeight: CGFloat = 140
 
     private let sourceLabel: UILabel = {
         let label = UILabel()
@@ -36,14 +36,13 @@ class NewsStoryTableViewCell: UITableViewCell {
 
     private let storyImageView: UIImageView = {
         let image = UIImageView()
-        image.backgroundColor = .tertiarySystemBackground
+        image.backgroundColor = .black
         image.clipsToBounds = true
-        image.contentMode = .scaleAspectFill
+        image.contentMode = .scaleAspectFit
         image.layer.cornerRadius = 6
         image.layer.masksToBounds = true
 
         return image
-
     }()
 
     private let dateLabel: UILabel = {
