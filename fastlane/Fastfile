@@ -1,0 +1,23 @@
+default_platform(:ios)
+
+platform :ios do
+  desc 'Run UI tests'
+  lane :ui_tests do |options|
+    scan_args = {
+        project: "Stocks.xcodeproj",
+        scheme: "UITests",
+        device: "iPhone 13 mini",
+        fail_build: true,
+        result_bundle: true,
+        skip_detect_devices: true,
+        test_without_building: true,
+        disable_package_automatic_updates: true,
+        skip_package_dependencies_resolution: true
+    }
+
+    scan(scan_args)
+    rescue StandardError => err
+    UI.important(err.to_s)
+    
+    end
+end
