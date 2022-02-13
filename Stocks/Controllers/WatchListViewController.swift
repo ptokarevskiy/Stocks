@@ -51,6 +51,7 @@ class WatchListViewController: UIViewController {
         resultsViewController.delegate = self
         searchViewController.searchResultsUpdater = self
         navigationItem.searchController = searchViewController
+        navigationItem.searchController?.searchBar.searchTextField.accessibilityIdentifier = "watchlist.search_field"
         navigationItem.hidesSearchBarWhenScrolling = false
     }
 
@@ -296,7 +297,9 @@ extension WatchListViewController: UITableViewDelegate, UITableViewDataSource {
         .delete
     }
 
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView,
+                   commit editingStyle: UITableViewCell.EditingStyle,
+                   forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             tableView.beginUpdates()
 

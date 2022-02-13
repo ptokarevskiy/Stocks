@@ -14,7 +14,8 @@
         }
 
         func updateUIViewController(_: ViewController,
-                                    context _: UIViewControllerRepresentableContext<UIViewControllerPreview<ViewController>>) {}
+                                    context _:
+                                    UIViewControllerRepresentableContext<UIViewControllerPreview<ViewController>>) {}
     }
 #endif
 

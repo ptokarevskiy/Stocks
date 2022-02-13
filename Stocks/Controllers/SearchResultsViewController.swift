@@ -70,6 +70,7 @@ extension SearchResultsViewController: UITableViewDelegate, UITableViewDataSourc
 
         cell.textLabel?.text = model.displaySymbol
         cell.detailTextLabel?.text = model.description
+        cell.accessibilityIdentifier = "search_results.company_cell"
 
         return cell
     }

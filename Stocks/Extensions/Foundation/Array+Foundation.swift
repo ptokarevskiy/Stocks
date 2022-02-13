@@ -7,7 +7,9 @@ extension Array where Element == CandleStick {
         }
 
         guard let latestClose = first?.close,
-              let priorClose = first(where: { !Calendar.current.isDate($0.date, inSameDayAs: latestDate) })?.close else {
+              let priorClose = first(where: {
+                  !Calendar.current.isDate($0.date, inSameDayAs: latestDate)
+              })?.close else {
             return 0.0
         }
 

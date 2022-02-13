@@ -52,7 +52,9 @@ class StockDetailHeaderView: UIView {
 
 // MARK: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
 
-extension StockDetailHeaderView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension StockDetailHeaderView: UICollectionViewDelegate,
+    UICollectionViewDataSource,
+    UICollectionViewDelegateFlowLayout {
     func numberOfSections(in _: UICollectionView) -> Int {
         1
     }
@@ -61,7 +63,8 @@ extension StockDetailHeaderView: UICollectionViewDelegate, UICollectionViewDataS
         metricsViewModels.count
     }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath)
+        -> UICollectionViewCell {
         let viewModel = metricsViewModels[indexPath.row]
 
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MetricCollectionViewCell.identifier,

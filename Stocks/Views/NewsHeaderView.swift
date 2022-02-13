@@ -22,6 +22,7 @@ class NewsHeaderView: UITableViewHeaderFooterView {
     private let label: UILabel = {
         let label = UILabel()
         label.font = .boldSystemFont(ofSize: 32)
+        label.accessibilityIdentifier = "news_header_view.company_symbol"
 
         return label
     }()
@@ -33,6 +34,7 @@ class NewsHeaderView: UITableViewHeaderFooterView {
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 6
         button.layer.masksToBounds = true
+        button.accessibilityIdentifier = "news_header_view.add_to_watchlist_button"
 
         return button
     }()

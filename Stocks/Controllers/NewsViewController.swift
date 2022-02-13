@@ -107,7 +107,8 @@ extension NewsViewController: UITableViewDelegate, UITableViewDataSource {
     // MARK: Header
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection _: Int) -> UIView? {
-        guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: NewsHeaderView.identifier) as? NewsHeaderView else {
+        guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier:
+            NewsHeaderView.identifier) as? NewsHeaderView else {
             return nil
         }
         header.configure(with: .init(title: type.title, shouldShowAddButton: false))
@@ -123,7 +124,9 @@ extension NewsViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView
-            .dequeueReusableCell(withIdentifier: NewsStoryTableViewCell.identifier, for: indexPath) as? NewsStoryTableViewCell else {
+            .dequeueReusableCell(withIdentifier:
+                NewsStoryTableViewCell.identifier,
+                for: indexPath) as? NewsStoryTableViewCell else {
             fatalError()
         }
         cell.configure(with: .init(model: stories[indexPath.row]))

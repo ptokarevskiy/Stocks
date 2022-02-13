@@ -11,7 +11,7 @@ class StockDetailsViewController: UIViewController {
     private let companyName: String
     private var candleStickData: [CandleStick]
     private var stories: [NewsStory] = []
-    private var metrics: FinancialMetricsResponse.Metrics?
+    private var metrics: Metrics?
 
     private let tableView: UITableView = {
         let table = UITableView()
@@ -181,7 +181,8 @@ extension StockDetailsViewController: UITableViewDelegate, UITableViewDataSource
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection _: Int) -> UIView? {
-        guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: NewsHeaderView.identifier) as? NewsHeaderView else {
+        guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier:
+            NewsHeaderView.identifier) as? NewsHeaderView else {
             return nil
         }
         header.delegate = self
@@ -255,7 +256,8 @@ extension StockDetailsViewController: NewsHeaderViewDelegate {
     struct StockDetailsViewControllerPreview: PreviewProvider {
         static var previews: some View {
             UIViewControllerPreview {
-                UINavigationController(rootViewController: StockDetailsViewController(symbol: "SNAP", companyName: "Snapchat"))
+                UINavigationController(rootViewController: StockDetailsViewController(symbol: "SNAP",
+                                                                                      companyName: "Snapchat"))
             }
             .previewLayout(.sizeThatFits)
             .environment(\.colorScheme, .light)

@@ -1,0 +1,3 @@
+class BaseScreen {
+    required init() {}
+}
