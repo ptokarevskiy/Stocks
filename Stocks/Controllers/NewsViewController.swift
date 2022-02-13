@@ -123,10 +123,8 @@ extension NewsViewController: UITableViewDelegate, UITableViewDataSource {
     // MARK: Cell
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView
-            .dequeueReusableCell(withIdentifier:
-                NewsStoryTableViewCell.identifier,
-                for: indexPath) as? NewsStoryTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: NewsStoryTableViewCell.identifier,
+                                                       for: indexPath) as? NewsStoryTableViewCell else {
             fatalError()
         }
         cell.configure(with: .init(model: stories[indexPath.row]))

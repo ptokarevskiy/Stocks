@@ -12,13 +12,13 @@ class StocksUITests: XCTestCase {
 
     func testOpenCompanyDetailsViaSearch() throws {
         app.launch()
-        
+
         let companySymbol = "DBX"
 
         WatchlistScreen()
             .searchStock(by: companySymbol)
             .openDetailsForStock(named: companySymbol)
-        
+
         StockDetailsScreen()
             .checkCompanySymbol(matches: companySymbol)
     }

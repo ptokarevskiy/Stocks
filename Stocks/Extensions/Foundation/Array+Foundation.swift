@@ -18,3 +18,9 @@ extension Array where Element == CandleStick {
         return difference
     }
 }
+
+extension Array where Element == UInt8 {
+    var stringFromBytes: String {
+        .init(bytes: self, encoding: .utf8) ?? ""
+    }
+}

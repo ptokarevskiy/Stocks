@@ -11,7 +11,7 @@ class StockDetailsViewController: UIViewController {
     private let companyName: String
     private var candleStickData: [CandleStick]
     private var stories: [NewsStory] = []
-    private var metrics: Metrics?
+    private var metrics: FinancialMetricsResponse.Metrics?
 
     private let tableView: UITableView = {
         let table = UITableView()

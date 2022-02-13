@@ -2,8 +2,10 @@ import Foundation
 
 final class APIManager {
     private enum Constants {
-        static let apiKey = "c47snsqad3icscifmh70"
-        static let sandboxApiKey = "sandbox_c47snsqad3icscifmh7g"
+        static let apiKey: [UInt8] = [99, 56, 52, 104, 103, 117, 113, 97, 100, 51, 105, 57, 117, 55, 57,
+                                      104, 56, 111, 101, 48]
+        static let sandboxApiKey: [UInt8] = [115, 97, 110, 100, 98, 111, 120, 95, 99, 52, 55, 115, 110, 115, 113,
+                                             97, 100, 51, 105, 99, 115, 99, 105, 102, 109, 104, 55, 103]
         static let baseURL = "https://finnhub.io/api/v1/"
         static let day: TimeInterval = 3_600 * 24
     }
@@ -106,7 +108,7 @@ final class APIManager {
             queryItems.append(.init(name: name, value: value))
         }
 
-        queryItems.append(.init(name: "token", value: Constants.apiKey))
+        queryItems.append(.init(name: "token", value: Constants.apiKey.stringFromBytes))
         urlString += "?" + queryItems.map { "\($0.name)=\($0.value ?? "")" }.joined(separator: "&")
 
         return URL(string: urlString)
